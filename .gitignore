@@ -1,0 +1,7 @@
+*.swp
+.DS_Store
+*credentials*
+fish/functions/install_gj.fish
+fish/functions/startDevEnv.fish
+fish/functions/test_php.fish
+fish/.dy_config.fish

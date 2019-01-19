@@ -1,0 +1,34 @@
+source $DOTFILES/vim/plugins.vim
+source $DOTFILES/vim/status_bar.vim
+
+let mapleader=" "
+noremap <leader>r :source $MYVIMRC<cr>
+noremap <leader>vc :vsp $MYVIMRC<cr>
+noremap <leader>s :w<cr>
+set shell=bash
+
+set relativenumber
+set number
+syntax on
+color desert
+set background=dark
+
+noremap j gj
+noremap k gk
+
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-h> <c-w>h
+noremap <c-l> <c-w>l
+
+set hls
+set incsearch
+set ignorecase
+set smartcase
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
