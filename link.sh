@@ -46,8 +46,11 @@ if [ "${user_shell}" == 'fish' ]; then
 		ln -s "${fish_config_source}" "${fish_config_target}"
 	fi
 
-	for func in "${DOTFILES}"/fish/functions/*.fish; do
-		target="$HOME/.config/fish/${func}"
+	mkdir -p "$HOME/.config/fish/functions"
+	functions=$( find -H "/Users/ricardo/Documents/workspace/dotfiles/fish/functions" )
+	for func in ${functions}; do
+		funcname=$(echo ${func} | sed -E 's/^.*\///')
+		target="$HOME/.config/fish/functions/${funcname}"
 		if [ -e "$target" ]; then
 			echo "~${target#$HOME} already exists - skipping..."
 		else 
@@ -56,3 +59,4 @@ if [ "${user_shell}" == 'fish' ]; then
 		fi
 	done
 fi
+
