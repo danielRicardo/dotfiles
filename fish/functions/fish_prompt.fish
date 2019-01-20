@@ -43,6 +43,5 @@ function fish_prompt
     echo The last command took (math "$CMD_DURATION/1000") seconds.
   end
 
-  echo -n -s $status_indicator $cwd $normal ' '
-  # echo -n -s $status_indicator $cwd $git_info $normal ' '
+  echo -n -s $status_indicator $cwd $git_info $normal ' '
 end
