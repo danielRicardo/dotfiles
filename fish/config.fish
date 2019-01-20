@@ -4,7 +4,7 @@ set -g -x JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/
 
 set PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /Users/ricardo/Applications/apache-maven-3.6.0/bin /bin /sbin
 
-source $DOTFILES/fish/.dy-config.fish
+source $DOTFILES/fish/.dy_config.fish
 
 setenv SSH_ENV $HOME/.ssh/environment
 
