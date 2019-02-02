@@ -33,7 +33,7 @@
                                             "right_command",
                                             "right_control",
                                             "right_option"
-                                        ]
+                                       ]
                                     }
                                 ],
                                 "to_if_alone": [
