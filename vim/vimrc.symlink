@@ -5,6 +5,7 @@ let mapleader=" "
 noremap <leader>r :source $MYVIMRC<cr>
 noremap <leader>vc :vsp $MYVIMRC<cr>
 noremap <leader>s :w<cr>
+noremap <leader>h :nohls<cr>
 set shell=bash
 
 set relativenumber
@@ -32,3 +33,4 @@ autocmd VimResized * :wincmd =
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+
