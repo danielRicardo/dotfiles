@@ -8,6 +8,10 @@ source $DOTFILES/fish/.dy_config.fish
 
 setenv SSH_ENV $HOME/.ssh/environment
 
+set -g -x EDITOR /usr/local/bin/vim
+alias ctags="/usr/local/bin/ctags"
+alias cat="/usr/local/bin/bat"
+
 if [ -n "$SSH_AGENT_PID" ] 
     ps -ef | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null
     if [ $status -eq 0 ]
@@ -25,6 +29,4 @@ else
     end  
 end
 
-set -g -x EDITOR /usr/local/bin/vim
-alias ctags="/usr/local/bin/ctags"
-
+ensure_tmux_is_running
