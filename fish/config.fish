@@ -12,6 +12,8 @@ set -g -x EDITOR /usr/local/bin/vim
 alias ctags="/usr/local/bin/ctags"
 alias cat="/usr/local/bin/bat"
 
+alias git="/usr/local/bin/hub"
+
 if [ -n "$SSH_AGENT_PID" ] 
     ps -ef | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null
     if [ $status -eq 0 ]
@@ -29,4 +31,4 @@ else
     end  
 end
 
-ensure_tmux_is_running
+# ensure_tmux_is_running
