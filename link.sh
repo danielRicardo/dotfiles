@@ -32,6 +32,13 @@ for file in $linkables ; do
 		ln -s "$file" "$target" 
 	fi
 done
+
+echo -e "Linking executables"
+executables=$( find -H "$DOTFILES/bin" -name "*.sh" )
+for ex in $executables; do
+  target="/usr/local/bin/$(basename "$ex" '.sh')"
+  ln -sf "$ex" "$target"
+done
 	
 if [ "${user_shell}" == 'fish' ]; then
 	echo -e 'Linking fish config files'
@@ -49,7 +56,7 @@ if [ "${user_shell}" == 'fish' ]; then
 	mkdir -p "$HOME/.config/fish/functions"
 	functions=$( find -H "/Users/ricardo/Documents/workspace/dotfiles/fish/functions" )
 	for func in ${functions}; do
-		funcname=$(echo ${func} | sed -E 's/^.*\///')
+		funcname=$(echo "${func}" | sed -E 's/^.*\///')
 		target="$HOME/.config/fish/functions/${funcname}"
 		if [ -e "$target" ]; then
 			echo "~${target#$HOME} already exists - skipping..."
