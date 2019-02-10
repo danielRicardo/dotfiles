@@ -4,6 +4,10 @@ bind-key -r C-s send-prefix
 
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
+# Plugins
+set -g @plugin 'wfxr/tmux-fzf-url' #Open URLs from tmux
+set -g @plugin 'tmux-plugins/tmux-sidebar' 
+
 # General env config
 set-option -g default-terminal "screen-256color"
 set-option -g status-keys "emacs"
@@ -70,3 +74,6 @@ bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-m
 
 bind-key C-K split-window -h "startDevEnv"
 bind-key -n C-W split-window -v "vim +VimwikiIndex"
+
+# Init TMUX plugin mangaer (make sure this is always the last line)
+run -b '~/.tmux/plugins/tpm/tpm'
