@@ -77,6 +77,10 @@ bind-key s display-panes\; command-prompt -p "pane #: "  "swap-pane -t '%%'"
 bind-key C-b send-keys 'tat; and exit' 'C-m'
 bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-message p "#S")" || tmux kill-session'
 
+# git integration
+bind-key p send-keys "git push origin (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" 'C-m'
+bind-key P send-keys "git push -f origin (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" 'C-m'
+
 bind-key C-K split-window -h "startDevEnv"
 bind-key -n C-W split-window -v "vim +VimwikiIndex"
 
