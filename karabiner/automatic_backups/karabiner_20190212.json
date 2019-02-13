@@ -49,17 +49,13 @@
                         "description": "Application to Hyper Key - Apple Keyboards",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 630,
-                                                "vendor_id": 1452
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
+                                "conditions": [{
+                                  "type": "device_if",
+                                  "identifiers": [ {
+                                    "product_id": 630,
+                                    "vendor_id": 1452
+                                  } ]
+                                }],
                                 "from": {
                                     "key_code": "right_alt",
                                     "modifiers": {
