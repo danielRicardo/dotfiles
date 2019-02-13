@@ -6,6 +6,7 @@ bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 
 # Plugins
 set -g @plugin 'robhurring/tmux-spotify'
+set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-cpu'
@@ -14,14 +15,16 @@ set -g @plugin 'wfxr/tmux-fzf-url' #Open URLs from tmux
 
 # General env config
 set-option -g default-terminal "screen-256color"
+set -g terminal-overrides ',xterm-256color:Tc'
 set-option -g status-keys "emacs"
+set -g @colors-solarized 'dark'
 
 # Customizing the status bar
 set-option -g status-bg '#666666'
 set-option -g status-fg '#aaaaaa'
 set-option -g status-left-length 50
 set-option -g status-right-length 250
-set-option -g status-right "♫ #{spotify_artist}: #{spotify_track} | Batt:#{battery_icon}#{battery_status_fg}#{battery_percentage} #[fg=#aaaaaa]| CPU#{cpu_fg_color}#{cpu_percentage} #[fg=#aaaaaa]| #(date '+%a, %b %d - %H:%M') "
+set-option -g status-right "♫ #{spotify_artist}: #{spotify_track}   #{spotify_status} | Batt:#{battery_icon}#{battery_status_fg}#{battery_percentage} #[fg=#aaaaaa]| CPU#{cpu_fg_color}#{cpu_percentage} #[fg=#aaaaaa]| #(date '+%a, %b %d - %H:%M') "
 
 # Pane navigation
 is_vim='echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?)(diff)?$"'
@@ -83,6 +86,8 @@ bind-key P send-keys "git push -f origin (command git symbolic-ref HEAD ^/dev/nu
 
 bind-key C-K split-window -h "startDevEnv"
 bind-key -n C-W split-window -v "vim +VimwikiIndex"
+
+bind-key v send-keys "source $WORKSPACE/condition-recommender/venv/bin/activate.fish" 'C-m'
 
 # Init TMUX plugin mangaer (make sure this is always the last line)
 run -b '~/.tmux/plugins/tpm/tpm'
