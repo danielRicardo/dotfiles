@@ -5,3 +5,4 @@ fish/functions/install_gj.fish
 fish/functions/startDevEnv.fish
 fish/functions/test_php.fish
 fish/.dy_config.fish
+bin/exp_report.sh
