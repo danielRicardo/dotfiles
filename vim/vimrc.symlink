@@ -9,6 +9,8 @@ noremap <leader>q :wq<cr>
 noremap <leader>Q :q!<cr>
 noremap <leader>h :nohls<cr>
 noremap <leader>i :PluginInstall<cr>
+noremap <leader>\ :vsp<cr>
+noremap <leader>- :split<cr>
 set shell=bash
 
 set relativenumber

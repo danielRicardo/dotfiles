@@ -31,4 +31,6 @@ else
     end  
 end
 
+set -g -x FZF_LEGACY_KEYBINDINGS 0
+set -g -x FZF_COMPLETE 3
 # ensure_tmux_is_running

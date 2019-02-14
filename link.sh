@@ -65,5 +65,11 @@ if [ "${user_shell}" == 'fish' ]; then
 			ln -s "$func" "$target" 
 		fi
 	done
+
+        completions=$( find -H "$DOTFILES/fish/completions" -name "*.fish" )
+        for comp in ${completions}; do
+          target="$HOME/.config/fish/completions/$(basename "$comp")"
+          ln -s "$comp" "$target"
+        done
 fi
 
