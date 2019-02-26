@@ -30,7 +30,6 @@ starttmux() {
   for i in "${hosts[@]}"
   do
     tmux split-window -t :"${windowname}" -h "ssh $user@$i"
-    echo "spliting for $i"
     tmux select-layout -t :"${windowname}" tiled > /dev/null  
   done
   tmux select-pane -t 0
