@@ -37,6 +37,9 @@ alias L='less'
 complete -o default -o nospace -F _git g
 . /usr/share/bash-completion/completions/git 2> /dev/null
 
+# Chef aliases
+alias cco='sudo chef-client -—once'
+alias ccs='sudo service chef-client stop'
 
 # SETTINGS
 
@@ -87,5 +90,5 @@ GIT_PS1_SHOWUPSTREAM="verbose git"
 # we don't want "command not found" errors when __git_ps1 is not installed
 type __git_ps1 &>/dev/null || function __git_ps1 () { true; }
 
-export PS1="${usercolor}\u@\h${pathcolor} \w${resetcolors}\$(__git_ps1)\n\\$ "
+export PS1="${usercolor}\u@\h${pathcolor} \w${resetcolors}\$(__git_ps1)\\$ "
 
