@@ -12,7 +12,8 @@
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	templateDir = /Users/ricardo/.git-templates/git-secrets
-[diff]
-        external = git_diff_wrapper
 [hub]
 	protocol = git
+[alias]
+        dt = difftool -t vimdiff
+	unstage = reset HEAD --
