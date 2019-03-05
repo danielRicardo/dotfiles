@@ -1,6 +1,7 @@
 source $DOTFILES/vim/plugins.vim
 source $DOTFILES/vim/status_bar.vim
 source $DOTFILES/vim/scala.vim
+source $DOTFILES/vim/md.vim
 
 let g:python3_host_prog = '/usr/local/bin/python3.7'
 
@@ -63,9 +64,9 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 
   " bind \ (backward slash) to grep shortcut
-  command -nargs=+ -complete=file -bar Lookup silent! grep! <args>|cwindow|redraw!
+  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
-  nnoremap \ :Lookup<SPACE>
+  nnoremap \ :Ag<SPACE>
 
 endif
 
