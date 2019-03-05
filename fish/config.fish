@@ -14,7 +14,6 @@ set -g -x EDITOR /usr/local/bin/nvim
 alias ctags="/usr/local/bin/ctags"
 alias cat="/usr/local/bin/bat"
 
-alias git="/usr/local/bin/hub"
 alias vim="/usr/local/bin/nvim"
 if [ -n "$SSH_AGENT_PID" ] 
     ps -ef | grep $SSH_AGENT_PID | grep ssh-agent > /dev/null
