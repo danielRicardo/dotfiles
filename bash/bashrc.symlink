@@ -41,6 +41,13 @@ complete -o default -o nospace -F _git g
 alias cco='sudo chef-client -—once'
 alias ccs='sudo service chef-client stop'
 
+# supervisor aliases
+alias scs='sudo supervisorctl status'
+alias scr='sudo supervisorctl restart'
+alias sck='sudo supervisorctl stop'
+alias sct='sudo supervisorctl start'
+
+
 # SETTINGS
 
 # enable autocompletion and make it case-insensitive
