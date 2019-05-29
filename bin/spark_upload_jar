@@ -1,0 +1,6 @@
+#!/usr/local/bin/bash
+
+set -e
+set -o pipefail
+
+knife node list | grep -E '(spark|outlier).*master' | fzf | xargs -I{} scp $1 {}:/home/ricardo

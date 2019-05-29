@@ -1,0 +1,15 @@
+#!/usr/local/bin/bash
+
+set -e
+set -o pipefail
+
+query=$(knife node list | grep -E 'flink.*(tm|taskmanager)' | sed -E 's/-[[:alnum:]]{7}\.(use|euc).*/-\1/' | uniq | fzf | sed -E 's/(.*)(.{4})$/\1.*\2/;s/-([[:alpha:]]{3,4})$/\1/')
+
+echo "${query}"
+
+tms=$(knife node list | grep -E "${query}" | tr '\r\n' ' ')
+
+echo "${tms}"
+
+$DOTFILES/bin/mssh.sh -d "${tms}" -c 'pwd'
+
