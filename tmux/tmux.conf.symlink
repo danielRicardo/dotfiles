@@ -92,7 +92,7 @@ bind-key P send-keys "git push -f origin (command git symbolic-ref HEAD ^/dev/nu
 #bind-key P confirm-before -p "Perform push force? (y/n)" send-keys "git push -f origin (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')" 'C-m'
 
 bind-key C-K split-window -h "startDevEnv"
-bind-key -n C-W split-window -v "vim +VimwikiIndex"
+bind-key C-w split-window -v "vim +VimwikiIndex"
 
 bind-key v send-keys "source $WORKSPACE/condition-recommender/venv/bin/activate.fish" 'C-m'
 
