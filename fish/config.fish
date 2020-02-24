@@ -4,7 +4,7 @@ set -g -x JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/
 set -g -x VIM /usr/local/share/nvim
 set -g -x VIMRUNTIME /usr/local/share/nvim/runtime
 
-set PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /Users/ricardo/Applications/apache-maven-3.6.0/bin /bin /sbin $DOTFILES/bin
+set PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /Users/ricardo/Applications/apache-maven-3.6.0/bin /bin /sbin $DOTFILES/bin /usr/local/anaconda3/bin
 
 source $DOTFILES/fish/.dy_config.fish
 
