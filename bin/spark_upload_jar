@@ -3,4 +3,4 @@
 set -e
 set -o pipefail
 
-knife node list | grep -E '(spark|outlier).*master' | fzf | xargs -I{} scp $1 {}:/home/ricardo
+knife node list | grep -E '(spark|outlier).*(master|driver)' | fzf | xargs -I{} scp $1 {}:/home/ricardo

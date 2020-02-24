@@ -3,4 +3,4 @@
 set -e
 set -o pipefail
 
-ssh $(knife node list | egrep '(spark|outlier).*master' | fzf)
+ssh $(knife node list | egrep '(spark|outlier).*(master|driver)' | fzf)
