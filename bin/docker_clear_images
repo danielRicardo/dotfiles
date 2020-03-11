@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+docker rmi $(docker images | grep $1 | tr -s ' ' | cut -d ' ' -f 3)
