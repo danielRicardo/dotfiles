@@ -35,3 +35,9 @@ end
 set -g -x FZF_LEGACY_KEYBINDINGS 0
 set -g -x FZF_COMPLETE 3
 # ensure_tmux_is_running
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval (eval /usr/local/anaconda3/bin/conda "shell.fish" "hook" $argv)
+# <<< conda initialize <<<
+
