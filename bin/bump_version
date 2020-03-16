@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+usage() {
+  echo "$1"
+  echo
+  echo 'bump_vesrion : [OPTION]'
+  echo '  -M    Bump major version'
+  echo '  -m    Bump minor version'
+  echo '  -p    Bump patch version'
+}
+
+if test -f VERSION; then
+  version=$(cat VERSION)
+else
+  echo "Unable to find VERSION file"
+  echo "Creating new file with version 0.1.0"
+  echo "0.1.0" > VERSION
+  exit 0
+fi
+
+major=$(echo "$version" | sed -E 's/^([0-9]+).*/\1/')
+minor=$(echo "$version" | sed -E 's/^[0-9]+\.([0-9]+).*/\1/')
+patch=$(echo "$version" | sed -E 's/^[0-9]+\.[0-9]+\.([0-9]+)$/\1/')
+
+while getopts "Mmph" o; do
+  case "${o}" in
+    M)
+      major=$((major + 1))
+      minor=0
+      patch=0
+      ;;
+    m)
+      minor=$((minor + 1))
+      patch=0
+      ;;
+    p)
+      patch=$((patch + 1))
+      ;;
+    h)
+      usage
+      exit 0
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+if [ $OPTIND -eq 1 ]; then
+  usage "Please provide a valid option flag"
+  exit 1
+fi
+
+echo "$major.$minor.$patch" | tee VERSION
