@@ -1,0 +1,24 @@
+#!/bin/bash
+
+TEAM=recs
+
+set -e
+set -o pipefail
+
+run() {
+  kubectl logs -n $TEAM "$(kubectl get pods -n $TEAM | sed -n '1!p' | cut -d' ' -f1 | fzf)"
+}
+
+while getopts "n:" o; do
+  case "${o}" in
+    n)
+      TEAM=${OPTARG}
+      ;;
+    *)
+      exit 1
+      ;;
+  esac
+done
+
+run
+
