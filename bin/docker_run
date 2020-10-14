@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+docker run -it $(docker images | sed -n '1!p' | sed -E 's/ +/:/g' | cut -d':' -f1,2 | fzf) /bin/bash 

@@ -3,6 +3,7 @@
 # Please adapt and uncomment the following lines:
 	name = Daniel Ricardo
 	email = daniel@dynamicyield.com
+	signingkey = D7B48CA7F0A017A1
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = [A-Z0-9]{20}
