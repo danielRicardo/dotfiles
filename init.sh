@@ -3,11 +3,11 @@
 set -e
 set -o pipefail
 
-DOTFILES=$(pwd)
+export DOTFILES=$(pwd)
 
-for file in (ls *.sh)
-	chmod +x $file
-end
+for file in $(ls *.sh); do
+	chmod +x ${file}
+done
 
 # Create symlinks
 $DOTFILES/link.sh
