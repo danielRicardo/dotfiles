@@ -1,12 +1,12 @@
-set -g -x WORKSPACE "/Users/ricardo/Documents/workspace"
-set -g -x DOTFILES "$WORKSPACE/dotfiles"
-set -g -x JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+set -g -x WORKSPACE "/Users/danieldynamicyield.com/workspace"
+set -g -x DOTFILES "/Users/danieldynamicyield.com/dotfiles"
 set -g -x VIM /usr/local/share/nvim
 set -g -x VIMRUNTIME /usr/local/share/nvim/runtime
 
 set PATH /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /Users/ricardo/Applications/apache-maven-3.6.0/bin /bin /sbin $DOTFILES/bin /usr/local/anaconda3/bin
 
-source $DOTFILES/fish/.dy_config.fish
+source ~/.config/fish/creds.fish
+source $DOTFILES/fish/pyenv.fish
 
 setenv SSH_ENV $HOME/.ssh/environment
 
@@ -38,6 +38,6 @@ set -g -x FZF_COMPLETE 3
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval (eval /usr/local/anaconda3/bin/conda "shell.fish" "hook" $argv)
+# eval (eval /usr/local/anaconda3/bin/conda "shell.fish" "hook" $argv)
 # <<< conda initialize <<<
 
