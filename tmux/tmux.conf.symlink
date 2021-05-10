@@ -7,6 +7,7 @@ bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 set -sg escape-time 10
 
 # Plugins
+set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'robhurring/tmux-spotify'
 set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'tmux-plugins/tmux-battery'
@@ -27,7 +28,7 @@ set-option -g status-bg '#666666'
 set-option -g status-fg '#aaaaaa'
 set-option -g status-left-length 250
 set-option -g status-right-length 250
-set-option -g status-right "♫ #{spotify_artist}: #{spotify_track}   #{spotify_status} | Batt:#{battery_icon}#{battery_status_fg}#{battery_percentage} #[fg=#aaaaaa]| CPU#{cpu_fg_color}#{cpu_percentage} #[fg=#aaaaaa]| #(date '+%a, %b %d - %H:%M') "
+set-option -g status-right "♫ #{music_status} #{artist}: #{track} | Batt:#{battery_icon}#{battery_status_fg}#{battery_percentage} #[fg=#aaaaaa]| CPU#{cpu_fg_color}#{cpu_percentage} #[fg=#aaaaaa]| #(date '+%a, %b %d - %H:%M') "
 set -g status-left '#{?client_prefix,#[fg=yellow]prefix pressed ..,[#S]}'
 
 # Pane navigation
@@ -93,4 +94,4 @@ bind-key P send-keys "git push -f origin (command git symbolic-ref HEAD ^/dev/nu
 
 
 # Init TMUX plugin mangaer (make sure this is always the last line)
-run -b '~/.tmux/plugins/tpm/tpm'
+run '~/.tmux/plugins/tpm/tpm'
