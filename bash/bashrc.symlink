@@ -1,6 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export DOTFILES='~/workspace/dotfiles'
 
 # list directories before files (if installed version of ls allows this)
 if man ls | grep group-directories-first >&/dev/null; then
