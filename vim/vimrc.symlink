@@ -1,7 +1,7 @@
-source $DOTFILES/vim/plugins.vim
-source $DOTFILES/vim/status_bar.vim
-source $DOTFILES/vim/scala.vim
-source $DOTFILES/vim/md.vim
+source $HOME/workspace/dotfiles/vim/plugins.vim
+source $HOME/workspace/dotfiles/vim/status_bar.vim
+source $HOME/workspace/dotfiles/vim/scala.vim
+source $HOME/workspace/dotfiles/vim/md.vim
 
 let g:python3_host_prog = '/usr/local/bin/python3.7'
 
@@ -15,7 +15,6 @@ noremap <leader>h :nohls<cr>
 noremap <leader>i :PluginInstall<cr>
 noremap <leader>\ :vsp<cr>
 noremap <leader>- :split<cr>
-set shell=bash
 
 set relativenumber
 set number
@@ -78,5 +77,3 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
  
-set background=dark
-colorscheme solarized8
