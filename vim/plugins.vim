@@ -5,7 +5,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"Plugin 'ensime/ensime-vim'
 Plugin 'AndrewRadev/linediff.vim'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -19,6 +18,7 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
 Plugin 'lifepillar/vim-solarized8'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tommcdo/vim-exchange'
