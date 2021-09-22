@@ -85,7 +85,10 @@ DOTFILES='~/workspacee/dotfiles'
 PATH="$PATH:$HOME/.rvm/bin"
 
 # Add coursier folder to path for all Scala tools
-PATH="$PATH:/Users/danielricardo/Library/Application Support/Coursier/bin"
+#PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+
+# Add pip3 folder to path for all Scala tools
+PATH="$PATH:$HOME/.local/bin"
 
 if [ -f "$HOME/.bash_aliases" ]; then
   source "$HOME/.bash_aliases"
