@@ -3,8 +3,9 @@ Nothing fancy here, these are just my dotfiles.
 They are still a work in progress, so I wouldn't recommend copying them just yet.
 
 ## My toolset
+  * Keyboard: [Redox](https://github.com/mattdibi/redox-keyboard)
   * Package manager (macOS): [Homebrew](https://brew.sh/)
-  * Shell: [fish](https://fishshell.com/)
+  * Shell: [zsh](https://zsh.org) + [Oh My Zsh](https://ohmyz.sh)
   * Vim 
   * Tmux
 
@@ -16,4 +17,5 @@ They are still a work in progress, so I wouldn't recommend copying them just yet
 
 ## Inspiration
   * [nicknisi/dotfiles](https://github.com/nicknisi/dotfiles)
+  * [ckipp01/dots](https://github.com/ckipp01/dots)
   * [thoughbot/dotfiles](https://github.com/thoughtbot/dotfiles)
