@@ -19,6 +19,7 @@ Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'overcache/NeoSolarized'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tommcdo/vim-exchange'
@@ -30,3 +31,4 @@ Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 filetype plugin indent on
+

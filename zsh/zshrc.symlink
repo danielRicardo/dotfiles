@@ -42,14 +42,15 @@ plugins=(
   fzf
   git
   gitignore
+  mvn
   sbt
   timer
   tmux
   vi-mode
   vscode
   zsh-autosuggestions
-  zsh-z
   zsh-syntax-highlighting
+  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -74,12 +75,12 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias v="nvim"
 
-EDITOR='/usr/bin/vim'
-DOTFILES='~/workspacee/dotfiles'
+EDITOR="/usr/local/bin/nvim"
+DOTFILES="$HOME/workspace/dotfiles"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 PATH="$PATH:$HOME/.rvm/bin"
@@ -138,3 +139,9 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOQUIT=true
 
+alias ssh="/Users/danielricardo/.af-ssh/update.sh; ssh $@"
+
+alias af-scp="/Users/danielricardo/.af-ssh/af_scp.sh $@"
+
+source $HOME/bin/af_scripts
+source $DOTFILES/zsh/functions

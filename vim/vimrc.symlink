@@ -2,8 +2,11 @@ source $HOME/workspace/dotfiles/vim/plugins.vim
 source $HOME/workspace/dotfiles/vim/status_bar.vim
 source $HOME/workspace/dotfiles/vim/scala.vim
 source $HOME/workspace/dotfiles/vim/md.vim
+source $HOME/workspace/dotfiles/vim/coc-metals.vim
 
 let g:python3_host_prog = '/usr/local/bin/python3.7'
+
+colorscheme NeoSolarized
 
 let mapleader=" "
 noremap <leader>r :source $MYVIMRC<cr>

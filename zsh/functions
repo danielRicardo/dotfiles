@@ -1,0 +1,4 @@
+function work() {
+  cd $(ls "$HOME/workspace" | sort -r | fzf | xargs -I{} echo "$HOME/workspace/{}")
+}
+  

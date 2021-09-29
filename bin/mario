@@ -1,6 +1,0 @@
-#!/usr/local/bin/bash
-
-set -e
-set -o pipefail
-
-knife node list | grep -E '(spark|outlier).*master' | fzf | xargs printf "http://%s:9084" | xargs open
