@@ -7,7 +7,8 @@ bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
 set -sg escape-time 10
 
 # Plugins
-set -g @plugin 'tmux-plugins/tpm'
+set -g @shell_mode 'vi'
+set -g @plugin tmux-plugins/tpm
 set -g @plugin 'robhurring/tmux-spotify'
 set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'tmux-plugins/tmux-battery'
@@ -94,4 +95,6 @@ bind-key P send-keys "git push -f origin $(git branch --show-current)" 'C-m'
 
 
 # Init TMUX plugin mangaer (make sure this is always the last line)
-run '~/.tmux/plugins/tpm/tpm'
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'"
+run -b '~/.tmux/plugins/tpm/tpm'

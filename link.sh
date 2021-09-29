@@ -3,9 +3,11 @@
 set -e
 set -o pipefail
 
+DOTFILES="/home/ricardo/workspace/dotfiles"
+
 function _show_help_and_exit() {
 	echo -e "Linking your configuration files from ${DOTFILES} to their appropriate locations\n"
-	echo -e "usage: ./link.sh [-f preferred_shell]"
+	echo -e "usage: ./link.sh [-s preferred_shell]"
 	exit "${1}"
 }
 
@@ -29,7 +31,7 @@ for file in $linkables ; do
 		echo "~${target#$HOME} already exists - skipping..."
 	else 
 		echo "Creating symlink for $file"
-		ln -s "$file" "$target" 
+		ln -sf "$file" "$target" 
 	fi
 done
 
