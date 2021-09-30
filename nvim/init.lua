@@ -6,6 +6,20 @@ local map = f.map
 local opt = vim.opt
 local global_opt = vim.opt_global
 
+----------------------------------
+-- BOOTSTRAP PACKER --------------
+----------------------------------
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.cmd 'packadd packer.nvim'
+end
+
+----------------------------------
+-- PLUGINS -----------------------
+----------------------------------
+
 cmd([[packadd packer.nvim]])
 require('plugins')
 require('settings.functions')
@@ -101,11 +115,6 @@ map('n', '<leader>ld', [[<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 map('n', '<leader>cl', [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 map('n', '<leader>st', [[<cmd>lua require('metals').toggle_setting('showImplicitArguments')<CR>]])
-
--- completion
-map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<Tab>']], { expr = true })
-map('i', '<Tab>', [[pumvisible() ? '<C-n>' : '<Tab>']], { expr = true })
-map('i', '<CR>', [[compe#confirm('<CR>')]], { expr = true })
 
 -- telescope
 map('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<CR>]])
