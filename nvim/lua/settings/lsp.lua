@@ -71,39 +71,6 @@ M.setup = function()
     require("metals").setup_dap()
   end
 
-  -- sumneko lua
-  lsp_config.sumneko_lua.setup({
-    cmd = {
-      "/Users/ckipp/Documents/lua-workspace/lua-language-server/bin/macOS/lua-language-server",
-      "-E",
-      "/Users/ckipp/Documents/lua-workspace/lua-language-server/main.lua",
-    },
-    commands = {
-      Format = {
-        function()
-          require("stylua-nvim").format_file()
-        end,
-      },
-    },
-    settings = {
-      Lua = {
-        runtime = {
-          version = "LuaJIT", -- since using mainly for neovim
-          path = vim.split(package.path, ";"),
-        },
-        diagnostics = { globals = { "vim", "it", "describe" } },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-          },
-        },
-        telemetry = { enable = false },
-      },
-    },
-  })
-
   lsp_config.dockerls.setup({})
   lsp_config.html.setup({})
   lsp_config.jsonls.setup({
@@ -126,11 +93,6 @@ M.setup = function()
     },
   })
 
-  require("lspconfig").kotlin_language_server.setup({
-    cmd = {
-      "/Users/ckipp/Documents/kotlin-workspace/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
-    },
-  })
 
   -- Uncomment for trace logs from neovim
   --vim.lsp.set_log_level('trace')
