@@ -2,7 +2,7 @@ source $HOME/workspace/dotfiles/vim/plugins.vim
 source $HOME/workspace/dotfiles/vim/status_bar.vim
 source $HOME/workspace/dotfiles/vim/scala.vim
 source $HOME/workspace/dotfiles/vim/md.vim
-source $HOME/workspace/dotfiles/vim/coc-metals.vim
+" source $HOME/workspace/dotfiles/vim/coc-metals.vim
 
 let g:python3_host_prog = '/usr/local/bin/python3.7'
 
@@ -37,10 +37,10 @@ noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
 
 " Better autocompletion menu contol
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+" inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
 set incsearch
 set ignorecase
