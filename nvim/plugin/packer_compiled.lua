@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/ricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/ricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/ricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/ricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/ricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/danielricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/danielricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/danielricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/danielricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/danielricardo/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -71,44 +71,94 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   NeoSolarized = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/NeoSolarized"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/NeoSolarized",
+    url = "https://github.com/overcache/NeoSolarized"
+  },
+  ["linediff.vim"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/linediff.vim",
+    url = "https://github.com/AndrewRadev/linediff.vim"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/nvim-compe",
+    url = "https://github.com/hrsh7th/nvim-compe"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-metals"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/nvim-metals",
+    url = "https://github.com/scalameta/nvim-metals"
   },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/opt/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-repeat"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-repeat"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-sort-motion"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-sort-motion"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-sort-motion",
+    url = "https://github.com/christoomey/vim-sort-motion"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,
-    path = "/home/ricardo/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/danielricardo/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
