@@ -1,5 +1,17 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# PATH Management
+path=("$HOME/bin" $path)
+path+="/usr/local/bin"
+path+="/usr/local/opt/fzf/bin"
+
+# Add pip3 folder to path for all Scala tools
+path+="$HOME/.local/bin"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+path+="$HOME/.rvm/bin"
+
+typeset -U PATH
+
+export PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -82,14 +94,6 @@ alias v="nvim"
 EDITOR="/usr/local/bin/nvim"
 DOTFILES="$HOME/workspace/dotfiles"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-PATH="$PATH:$HOME/.rvm/bin"
-
-# Add coursier folder to path for all Scala tools
-#PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
-
-# Add pip3 folder to path for all Scala tools
-PATH="$PATH:$HOME/.local/bin"
 
 if [ -f "$HOME/.bash_aliases" ]; then
   source "$HOME/.bash_aliases"
@@ -104,6 +108,11 @@ fi
 if man ls | grep group-directories-first >&/dev/null; then
   alias ls='ls --color=auto --group-directories-first'
 fi
+
+# glab aliases
+alias gmcf='glab mr create --fill'
+alias gmvw='glab mr view --web'
+alias grvw='glab repo view --web'
 
 # default settings for less. You may also want to disable line wrapping with -S
 LESS='-MRi#8j.5'
@@ -139,9 +148,14 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOQUIT=true
 
+
 alias ssh="/Users/danielricardo/.af-ssh/update.sh; ssh $@"
 
 alias af-scp="/Users/danielricardo/.af-ssh/af_scp.sh $@"
+
+# Coursier Settings
+COURSIER_INSTALL_DIR="$HOME/bin"
+
 
 source $HOME/bin/af_scripts
 source $DOTFILES/zsh/functions
