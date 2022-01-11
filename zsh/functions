@@ -1,4 +1,8 @@
 function work() {
   cd $(ls "$HOME/workspace" | sort -r | fzf | xargs -I{} echo "$HOME/workspace/{}")
 }
-  
+
+function gs() {
+  git branch | fzf | xargs -I{} git switch {}
+}
+
