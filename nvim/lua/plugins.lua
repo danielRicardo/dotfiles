@@ -3,6 +3,7 @@ return require("packer").startup(function()
   use 'AndrewRadev/linediff.vim'
   use 'christoomey/vim-sort-motion'
   use 'christoomey/vim-tmux-navigator'
+  use 'easymotion/vim-easymotion'
   use 'junegunn/gv.vim'
   use 'mfussenegger/nvim-dap'
   use 'mhinz/vim-signify'
