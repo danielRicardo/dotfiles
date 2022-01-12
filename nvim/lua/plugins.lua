@@ -16,6 +16,8 @@ return require("packer").startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-surround'
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
   use 'vim-test/vim-test'
   use { 'hrsh7th/nvim-compe', requires = {{'hrsh7th/vim-vsnip'}} }
   use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} }

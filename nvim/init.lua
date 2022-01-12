@@ -68,6 +68,8 @@ if fn.exists('&termguicolors') then
   g.neosolarized_termtrans=1
   cmd('colorscheme NeoSolarized')
 end
+g.airline_theme='luna'
+opt.showmode = false
 
 -- Remappings
 map('n', '<Space>', '')
