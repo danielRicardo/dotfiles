@@ -27,14 +27,18 @@ return require("packer").startup(function()
   use { 'scalameta/nvim-metals', requires = {{"nvim-lua/plenary.nvim"}} }
 
   -- clojure
+  use 'Olical/conjure'
+  use 'clojure-vim/vim-jack-in'
 
   -- look and feel
   use 'overcache/NeoSolarized'
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
 
-  -- misc
+  -- external environment communication
   use 'christoomey/vim-tmux-navigator'
+  use 'tpope/vim-dispatch'
+  use 'radenling/vim-dispatch-neovim'
 
 
   use { 'wbthomason/packer.nvim', opt = true}
