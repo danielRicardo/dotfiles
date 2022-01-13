@@ -18,7 +18,8 @@ M.setup = function()
         filetypes = { "scala", "html", "javascript", "lua", "java", "go" },
       },
       tags = true,
-      snippets_nvim = true
+      snippets_nvim = true,
+      conjure = true
     },
   })
 end

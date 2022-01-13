@@ -74,6 +74,7 @@ opt.showmode = false
 -- Remappings
 map('n', '<Space>', '')
 g.mapleader = ' '
+g.maplocalleader = ','
 
 map('n', '<leader>r', ':source $MYVIMRC<cr>')
 

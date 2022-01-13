@@ -29,6 +29,7 @@ return require("packer").startup(function()
   -- clojure
   use 'Olical/conjure'
   use 'clojure-vim/vim-jack-in'
+  use 'tami5/compe-conjure'
 
   -- look and feel
   use 'overcache/NeoSolarized'
