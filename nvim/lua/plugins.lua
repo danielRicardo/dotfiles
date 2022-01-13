@@ -32,9 +32,11 @@ return require("packer").startup(function()
   use 'tami5/compe-conjure'
 
   -- look and feel
-  use 'overcache/NeoSolarized'
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+  use "projekt0n/github-nvim-theme"
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
   -- external environment communication
   use 'christoomey/vim-tmux-navigator'

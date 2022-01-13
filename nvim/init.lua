@@ -27,6 +27,8 @@ require('settings.telescope').setup()
 require('settings.compe').setup()
 require('settings.lsp').setup()
 require('settings.vim-test')
+require('settings.lualine').setup()
+require('settings.signify').setup()
 
 ----------------------------------
 -- OPTIONS -----------------------
@@ -65,11 +67,10 @@ opt.fileformat = 'unix'
 if fn.exists('&termguicolors') then
   opt.termguicolors = true
   opt.background = 'dark'
-  g.neosolarized_termtrans=1
-  cmd('colorscheme NeoSolarized')
 end
-g.airline_theme='luna'
-opt.showmode = false
+require('github-theme').setup({
+  theme_style = "dimmed",
+})
 
 -- Remappings
 map('n', '<Space>', '')
