@@ -2,9 +2,10 @@
 
 local M = {}
 
-M.setup = function() 
+M.setup = function()
 
   local shared_diagnostic_settings = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
 
   Metals_config = require("metals").bare_config()
 
