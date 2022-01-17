@@ -4,7 +4,21 @@ local M = {}
 
 M.setup = function()
   require("nvim-treesitter.configs").setup({
-    ensure_installed = {'bash', 'clojure', 'css', 'dockerfile', 'html', 'java', 'javascript', 'json', 'lua', 'markdown', 'python', 'scala', 'yaml'},
+    ensure_installed = {
+      'bash',
+      'clojure',
+      'css',
+      'dockerfile',
+      'html',
+      'java',
+      'javascript',
+      'json',
+      'lua',
+      'markdown',
+      'python',
+      'scala',
+      'yaml'
+    },
     highlight = { enable = true, additional_vim_regex_highlighting = false },
     indent = { enable = true },
     rainbow = {
@@ -12,7 +26,7 @@ M.setup = function()
       extended_mode = true,
       max_file_line = nil
     },
-    autopais = { enable = true },
+    autopairs = { enable = true },
   })
 
 end
