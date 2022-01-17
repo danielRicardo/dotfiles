@@ -1,101 +1,41 @@
 local M = {}
 
 M.setup = function()
-  local shared_diagnostic_settings = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
-  local lsp_config = require("lspconfig")
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+	local lsp_installer = require('nvim-lsp-installer')
 
-  lsp_config.util.default_config = vim.tbl_extend("force", lsp_config.util.default_config, {
-    handlers = {
-      ["textDocument/publishDiagnostics"] = shared_diagnostic_settings,
-    },
-    capabilities = capabilities,
-  })
+	lsp_installer.on_server_ready(function(server)
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local opts = {capabilities = capabilities}
 
-  Metals_config = require("metals").bare_config()
+		if server.name == "yamlls" then
+      opts = vim.tbl_deep_extend("force", {
+			settings = {
+        yaml = {
+            schemas = {
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "**/docker-compose*.y?(a)ml"
+            }
+          }
+			}
+      }, opts)
+    end
 
-  Metals_config.settings = {
-    showImplicitArguments = true,
-    showInferredType = true,
-    excludedPackages = {
-      "akka.actor.typed.javadsl",
-      "com.github.swagger.akka.javadsl",
-      "akka.stream.javadsl",
-    },
-    fallbackScalaVersion = "3.0.1",
-    --fallbackScalaVersion = "2.13.6",
-    superMethodLensesEnabled = true,
-  }
+    if server.name == "sumneko_lua" then
+      opts = vim.tbl_deep_extend("force", {
+        settings = {
+          Lua = {
+            runtime = {version = 'LuaJIT', path = vim.split(package.path, ';')},
+            diagnostics = {globals = {'vim'}},
+            workspace = {library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false},
+            telemetry = {enable = false}
+          }
+        }
 
-  Metals_config.init_options.statusBarProvider = "on"
-  Metals_config.handlers["textDocument/publishDiagnostics"] = shared_diagnostic_settings
-  Metals_config.capabilities = capabilities
+      }, opts)
+    end
 
-  local dap = require("dap")
-
-  dap.configurations.scala = {
-    {
-      type = "scala",
-      request = "launch",
-      name = "Run",
-      metals = {
-        runType = "run",
-        args = { "firstArg", "secondArg", "thirdArg" },
-      },
-    },
-    {
-      type = "scala",
-      request = "launch",
-      name = "Test File",
-      metals = {
-        runType = "testFile",
-      },
-    },
-    {
-      type = "scala",
-      request = "launch",
-      name = "Test Target",
-      metals = {
-        runType = "testTarget",
-      },
-    },
-  }
-
-  Metals_config.on_attach = function(client, bufnr)
-
-    vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
-    vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
-    vim.cmd([[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]])
-
-    require("metals").setup_dap()
-  end
-
-  lsp_config.dockerls.setup({})
-  lsp_config.html.setup({})
-  lsp_config.jsonls.setup({
-    commands = {
-      Format = {
-        function()
-          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-        end,
-      },
-    },
-  })
-  lsp_config.tsserver.setup({})
-  lsp_config.yamlls.setup({})
-  lsp_config.racket_langserver.setup({})
-
-  lsp_config.gopls.setup({
-    cmd = { "gopls", "serve" },
-    settings = {
-      gopls = { analyses = { unusedparams = true }, staticcheck = true },
-    },
-  })
-
-
-  -- Uncomment for trace logs from neovim
-  --vim.lsp.set_log_level('trace')
+    server:setup(opts)
+  end)
 end
 
 return M

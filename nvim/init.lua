@@ -1,5 +1,4 @@
 local cmd = vim.cmd
-local fn = vim.fn
 local g = vim.g
 local f = require('settings.functions')
 local map = f.map
@@ -24,11 +23,16 @@ cmd([[packadd packer.nvim]])
 require('plugins')
 require('settings.functions')
 require('settings.telescope').setup()
-require('settings.compe').setup()
+require('settings.cmp').setup()
 require('settings.lsp').setup()
+require('settings.metals').setup()
+require('settings.dap').setup()
 require('settings.vim-test')
 require('settings.lualine').setup()
 require('settings.signify').setup()
+require('settings.treesitter').setup()
+require('settings.autopairs').setup()
+
 
 ----------------------------------
 -- OPTIONS -----------------------
@@ -88,7 +92,6 @@ map('n', '<c-l>', '<c-w>l')
 -- completion
 map('i', '<S-Tab>', [[pumvisible() ? '<C-p>' : '<Tab>']], { expr = true })
 map('i', '<Tab>', [[pumvisible() ? '<C-n>' : '<Tab>']], { expr = true })
-map('i', '<CR>', [[compe#confirm('<CR>')]], { expr = true })
 
 map('n', '<leader>h', ':nohls<CR>')
 map('n', '<leader>\\', ':vsp<CR>')

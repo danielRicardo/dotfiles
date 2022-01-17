@@ -21,7 +21,31 @@ return require("packer").startup(function()
   -- LSP
   use 'mfussenegger/nvim-dap'
   use 'neovim/nvim-lspconfig'
-  use { 'hrsh7th/nvim-compe', requires = {{'hrsh7th/vim-vsnip'}} }
+  use 'williamboman/nvim-lsp-installer'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      { 'p00f/nvim-ts-rainbow' },
+      { 'windwp/nvim-autopairs' }
+    },
+    run = ':TSUpdate'
+  }
+  use 'nvim-treesitter/playground'
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      { 'hrsh7th/vim-vsnip' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'andersevenrud/cmp-tmux' },
+      { 'onsails/lspkind-nvim' },
+      { 'PaterJason/cmp-conjure' }
+    }
+  }
+
 
   -- scala
   use { 'scalameta/nvim-metals', requires = {{"nvim-lua/plenary.nvim"}} }
