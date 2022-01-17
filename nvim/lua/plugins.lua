@@ -54,6 +54,8 @@ return require("packer").startup(function()
   use 'Olical/conjure'
   use 'clojure-vim/vim-jack-in'
   use 'tami5/compe-conjure'
+  use 'guns/vim-sexp'
+  use 'tpope/vim-sexp-mappings-for-regular-people'
 
   -- look and feel
   use "projekt0n/github-nvim-theme"
