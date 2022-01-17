@@ -10,14 +10,15 @@ return require("packer").startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'vim-test/vim-test'
-  use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}} }
+  use 'nvim-telescope/telescope.nvim'
+  use 'kyazdani42/nvim-tree.lua'
 
   -- git related
   use 'junegunn/gv.vim'
   use 'mhinz/vim-signify'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
-  
+
   -- LSP
   use 'mfussenegger/nvim-dap'
   use 'neovim/nvim-lspconfig'
@@ -26,7 +27,8 @@ return require("packer").startup(function()
     'nvim-treesitter/nvim-treesitter',
     requires = {
       { 'p00f/nvim-ts-rainbow' },
-      { 'windwp/nvim-autopairs' }
+      { 'windwp/nvim-autopairs' },
+      { 'nvim-treesitter/nvim-treesitter-refactor' },
     },
     run = ':TSUpdate'
   }
@@ -73,6 +75,6 @@ return require("packer").startup(function()
   use { 'wbthomason/packer.nvim', opt = true}
 
 end)
-  
+
 
 
