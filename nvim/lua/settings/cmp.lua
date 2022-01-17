@@ -35,7 +35,7 @@ M.setup = function()
 	      i = cmp.mapping.abort(),
 	      c = cmp.mapping.close(),
 	    }),
-	    ['<CR>'] = cmp.mapping.confirm({ select = true }), 
+	    ['<CR>'] = cmp.mapping.confirm({ select = true }),
 	    ["<Tab>"] = cmp.mapping(function(fallback)
 	      if cmp.visible() then
 		cmp.select_next_item()
@@ -60,9 +60,10 @@ M.setup = function()
 	    -- { name = 'luasnip' }, -- For luasnip users.
 	    { name = 'buffer' },
 	    { name = 'path' },
-      { name = 'conjure' }
+      { name = 'conjure' },
+      { name = 'tmux' },
 	  }),
-	  formatting = { format = lspkind.cmp_format({with_text = true, maxwidth = 50})} 
+	  formatting = { format = lspkind.cmp_format({with_text = true, maxwidth = 50})}
 	})
 
 	-- Setup lspconfig.
