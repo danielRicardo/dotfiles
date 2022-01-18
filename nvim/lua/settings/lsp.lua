@@ -4,10 +4,11 @@ M.setup = function()
 	local lsp_installer = require('nvim-lsp-installer')
 
   local servers = {
-    "yamlls",
-    "sumneko_lua",
     "clojure_lsp",
-    "dockerls"
+    "dockerls",
+    "sumneko_lua",
+    "yamlls",
+    "lemminx",
   }
 
   for _, name in pairs(servers) do
@@ -30,7 +31,7 @@ M.setup = function()
           yaml = {
             schemas = {
               ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-              -- ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/**/docker-compose*.y?(a)ml"
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/**/docker-compose*.y?(a)ml"
             }
           }
         }
