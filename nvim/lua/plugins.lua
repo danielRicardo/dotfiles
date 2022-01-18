@@ -3,7 +3,7 @@ return require("packer").startup(function()
   -- vim enhancements
   use 'AndrewRadev/linediff.vim'
   use 'christoomey/vim-sort-motion'
-  use 'easymotion/vim-easymotion'
+  use 'phaazon/hop.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
@@ -12,6 +12,7 @@ return require("packer").startup(function()
   use 'vim-test/vim-test'
   use 'nvim-telescope/telescope.nvim'
   use 'kyazdani42/nvim-tree.lua'
+  use 'rcarriga/nvim-notify'
 
   -- git related
   use 'junegunn/gv.vim'
