@@ -18,6 +18,7 @@ require('settings.functions')
 require('settings.lsp').setup()
 require('settings.lualine').setup()
 require('settings.metals').setup()
+require('settings.notify').setup()
 require('settings.nvim-tree').setup()
 require('settings.signify').setup()
 require('settings.telescope').setup()
@@ -69,7 +70,9 @@ require('github-theme').setup({
   theme_style = "dimmed",
 })
 
--- Remappings
+----------------------------------
+-- REMAPPINGS --------------------
+----------------------------------
 map('n', '<Space>', '')
 g.mapleader = ' '
 g.maplocalleader = ','
