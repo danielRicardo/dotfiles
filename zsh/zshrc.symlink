@@ -148,14 +148,12 @@ ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_AUTOCONNECT=true
 ZSH_TMUX_AUTOQUIT=true
 
-
-alias ssh="/Users/danielricardo/.af-ssh/update.sh; ssh $@"
-
-alias af-scp="/Users/danielricardo/.af-ssh/af_scp.sh $@"
-
 # Coursier Settings
 COURSIER_INSTALL_DIR="$HOME/bin"
 
-
-source $HOME/bin/af_scripts
 source $DOTFILES/zsh/functions
+
+if [[ "$(hostname)" == "danielricardo.af" ]]; then
+  source $HOME/bin/af_scripts
+fi
+
