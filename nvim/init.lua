@@ -4,22 +4,12 @@ local f = require('settings.functions')
 local map = f.map
 local opt = vim.opt
 local global_opt = vim.opt_global
-
-----------------------------------
--- BOOTSTRAP PACKER --------------
-----------------------------------
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd 'packadd packer.nvim'
-end
 
 ----------------------------------
 -- PLUGINS -----------------------
 ----------------------------------
 
-cmd([[packadd packer.nvim]])
 require('plugins')
 require('settings.autopairs').setup()
 require('settings.cmp').setup()
@@ -61,6 +51,8 @@ opt.number = true
 opt.relativenumber = true
 opt.shiftwidth = 2
 opt.softtabstop = 2
+opt.splitbelow = true
+opt.splitright = true
 
 
 -- buffer-scoped

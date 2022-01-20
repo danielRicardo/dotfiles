@@ -1,5 +1,8 @@
-return require("packer").startup(function()
+----------------------------------
+-- PLUGINS -----------------------
+----------------------------------
 
+local plugins = function (use)
   -- vim enhancements
   use 'AndrewRadev/linediff.vim'
   use 'christoomey/vim-sort-motion'
@@ -74,8 +77,52 @@ return require("packer").startup(function()
 
 
   use { 'wbthomason/packer.nvim', opt = true}
+end
 
-end)
+----------------------------------
+-- BOOTSTRAP PACKER --------------
+----------------------------------
+
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  vim.notify("Packer initialization failed", vim.log.levels.ERROR)
+  return
+end
+
+----------------------------------
+-- INITIALIZE --------------------
+----------------------------------
+
+return require("packer").startup({
+  function(use)
+    plugins(use)
+
+    if packer_bootstrap then
+      require('packer').sync()
+    end
+
+  end,
+  config = {
+    display = {
+      open_fn = function ()
+        return require("packer.util").float { border = "rounded" }
+      end
+    }
+  }
+})
 
 
 
