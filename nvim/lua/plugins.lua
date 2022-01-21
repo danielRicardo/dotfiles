@@ -4,76 +4,60 @@
 
 local plugins = function (use)
   -- vim enhancements
-  use 'AndrewRadev/linediff.vim'
-  use 'christoomey/vim-sort-motion'
-  use 'phaazon/hop.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-telescope/telescope-fzy-native.nvim'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'vim-test/vim-test'
-  use 'nvim-telescope/telescope.nvim'
-  use 'kyazdani42/nvim-tree.lua'
-  use 'rcarriga/nvim-notify'
+  use { 'AndrewRadev/linediff.vim' }
+  use { 'christoomey/vim-sort-motion' }
+  use { 'phaazon/hop.nvim' }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'nvim-lua/popup.nvim' }
+  use { 'tpope/vim-repeat' }
+  use { 'tpope/vim-surround' }
+  use { 'vim-test/vim-test', config = "require('settings.vim-test')" }
+  use { 'nvim-telescope/telescope.nvim', config = "require('settings.telescope').setup()", requires = {  'nvim-telescope/telescope-fzy-native.nvim' } }
+  use { 'kyazdani42/nvim-tree.lua', config = "require('settings.nvim-tree').setup()" }
+  use { 'rcarriga/nvim-notify', config = "require('settings.notify').setup()" }
 
   -- git related
-  use 'junegunn/gv.vim'
-  use 'mhinz/vim-signify'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
+  use { 'junegunn/gv.vim' }
+  use { 'mhinz/vim-signify', config = "require('settings.signify').setup()" }
+  use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-rhubarb' }
 
   -- LSP
-  use 'mfussenegger/nvim-dap'
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    requires = {
-      { 'p00f/nvim-ts-rainbow' },
-      { 'windwp/nvim-autopairs' },
-      { 'nvim-treesitter/nvim-treesitter-refactor' },
-    },
-    run = ':TSUpdate'
-  }
-  use 'nvim-treesitter/playground'
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      { 'hrsh7th/vim-vsnip' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'andersevenrud/cmp-tmux' },
-      { 'onsails/lspkind-nvim' },
-      { 'PaterJason/cmp-conjure' }
-    }
-  }
+  use { 'mfussenegger/nvim-dap', config = "require('settings.dap').setup()" }
+  use { 'neovim/nvim-lspconfig', config = "require('settings.lsp').setup()" }
+  use { 'williamboman/nvim-lsp-installer' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = "require('settings.treesitter').setup()" }
+  use { 'windwp/nvim-autopairs' , config = "require('settings.autopairs').setup()", after = "nvim-treesitter"}
+  use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
+  use { 'nvim-treesitter/nvim-treesitter-refactor', after = "nvim-treesitter" }
+  use { 'nvim-treesitter/playground' }
+  use { 'hrsh7th/nvim-cmp', config = "require('settings.cmp').setup()", requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-nvim-lsp' } }
+  use { 'hrsh7th/vim-vsnip', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-vsnip', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
+  use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
+  use { 'andersevenrud/cmp-tmux', after = "nvim-cmp" }
 
 
   -- scala
-  use { 'scalameta/nvim-metals', requires = {{"nvim-lua/plenary.nvim"}} }
+  use { 'scalameta/nvim-metals', ft = { 'scala', 'sbt' }, config = "require('settings.metals').setup()" }
 
   -- clojure
-  use 'Olical/conjure'
-  use 'clojure-vim/vim-jack-in'
-  use 'tami5/compe-conjure'
-  use 'guns/vim-sexp'
-  use 'tpope/vim-sexp-mappings-for-regular-people'
+  use { 'Olical/conjure' }
+  use { 'PaterJason/cmp-conjure', after = { "nvim-cmp", "conjure" } }
+  use { 'clojure-vim/vim-jack-in', after = "conjure" }
+  use { 'guns/vim-sexp' }
+  use { 'tpope/vim-sexp-mappings-for-regular-people', after = "vim-sexp" }
 
   -- look and feel
-  use "projekt0n/github-nvim-theme"
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  use { "projekt0n/github-nvim-theme" }
+  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = "require('settings.lualine').setup()" }
 
   -- external environment communication
-  use 'christoomey/vim-tmux-navigator'
-  use 'tpope/vim-dispatch'
-  use 'radenling/vim-dispatch-neovim'
+  use { 'christoomey/vim-tmux-navigator' }
+  use { 'tpope/vim-dispatch' }
+  use { 'radenling/vim-dispatch-neovim' }
 
 
   use { 'wbthomason/packer.nvim', opt = true}
@@ -92,7 +76,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> 
   augroup end
 ]])
 
