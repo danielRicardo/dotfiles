@@ -2,9 +2,6 @@ local cmd = vim.cmd
 local g = vim.g
 local f = require('settings.functions')
 local map = f.map
-local opt = vim.opt
-local global_opt = vim.opt_global
-local fn = vim.fn
 
 ----------------------------------
 -- PLUGINS -----------------------
@@ -12,50 +9,8 @@ local fn = vim.fn
 
 require('plugins')
 require('settings.functions')
-
-----------------------------------
--- OPTIONS -----------------------
-----------------------------------
-local indent = 2
-
--- global
-global_opt.shortmess:remove('F'):append('c')
-global_opt.termguicolors = true
-global_opt.hidden = true
-global_opt.showtabline = 1
-global_opt.updatetime = 300
-global_opt.showmatch = true
-global_opt.laststatus = 2
-global_opt.wildignore = { '.git', '*/node_modules/*', '*/target/*', '.metals', '.bloop', '.ammonite' }
-global_opt.ignorecase = true
-global_opt.smartcase = true
-global_opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect' }
-
--- window-scoped
-opt.wrap = false
-opt.cursorline = true
-opt.signcolumn = 'yes'
-opt.number = true
-opt.relativenumber = true
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.splitbelow = true
-opt.splitright = true
-
-
--- buffer-scoped
-opt.tabstop = indent
-opt.expandtab = true
-opt.fileformat = 'unix'
-
--- Look and Feel
-if fn.exists('&termguicolors') then
-  opt.termguicolors = true
-  opt.background = 'dark'
-end
-require('github-theme').setup({
-  theme_style = "dimmed",
-})
+require('settings.options')
+require('settings.colorscheme')
 
 ----------------------------------
 -- REMAPPINGS --------------------
