@@ -22,6 +22,10 @@ local plugins = function (use)
   use { 'tpope/vim-fugitive' }
   use { 'tpope/vim-rhubarb' }
 
+  -- snippets
+  use { 'L3MON4D3/LuaSnip' }
+  use { 'rafamadriz/friendly-snippets' }
+
   -- LSP
   use { 'mfussenegger/nvim-dap', config = "require('settings.dap').setup()" }
   use { 'neovim/nvim-lspconfig', config = "require('settings.lsp').setup()" }
@@ -31,14 +35,10 @@ local plugins = function (use)
   use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
   use { 'nvim-treesitter/nvim-treesitter-refactor', after = "nvim-treesitter" }
   use { 'nvim-treesitter/playground' }
-  use { 'hrsh7th/nvim-cmp', config = "require('settings.cmp').setup()", requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-nvim-lsp' } }
-  use { 'hrsh7th/vim-vsnip', after = "nvim-cmp" }
-  use { 'hrsh7th/cmp-vsnip', after = "nvim-cmp" }
+  use { 'hrsh7th/nvim-cmp', config = "require('settings.cmp').setup()", requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-nvim-lsp' }, after = "LuaSnip" }
   use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
   use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
-  use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
   use { 'andersevenrud/cmp-tmux', after = "nvim-cmp" }
-
 
   -- scala
   use { 'scalameta/nvim-metals', ft = { 'scala', 'sbt' }, config = "require('settings.metals').setup()" }
