@@ -31,7 +31,7 @@ local plugins = function (use)
   use { 'neovim/nvim-lspconfig', config = "require('settings.lsp').setup()" }
   use { 'williamboman/nvim-lsp-installer' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = "require('settings.treesitter').setup()" }
-  use { 'windwp/nvim-autopairs' , config = "require('settings.autopairs').setup()", after = "nvim-treesitter"}
+  use { 'windwp/nvim-autopairs' , config = "require('settings.autopairs').setup()", after = { "nvim-treesitter", "nvim-cmp" } }
   use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
   use { 'nvim-treesitter/nvim-treesitter-refactor', after = "nvim-treesitter" }
   use { 'nvim-treesitter/playground' }
