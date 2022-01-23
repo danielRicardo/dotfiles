@@ -10,7 +10,7 @@ map('n', '<Space>', '')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-map('n', '<Leader>r', ':source $MYVIMRC<cr>')
+map('n', '<leader>r', ':source $MYVIMRC<cr>')
 
 -- Sensible pane navigation
 map('n', '<c-j>', '<c-w>j')
@@ -82,3 +82,6 @@ map('n', '<leader>tl', ':TestLast<CR>')
 map('n', '<leader>tv', ':TestVisit<CR>')
 map('t', '<C-o>', '<C-\\><C-n>')
 map('n', '<leader>df', '0y/))\\n<CR><C-w>npdf(:%s/\\n//g<CR>:%s/\\v, ?\\(/, (/g<CR>:s/, /\\r/g<CR>gg:%s/\\v\\) did.*t\\(/\\r\\r/<CR>ggvip:sort<CR>vip:Linediff<CR>Gvip:sort<CR>vip:Linediff<CR>')
+
+-- nvim-tree
+map('n', '<leader>e', ':NvimTreeFocus<CR>')
