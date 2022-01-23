@@ -41,7 +41,7 @@ local plugins = function (use)
   use { 'andersevenrud/cmp-tmux', after = "nvim-cmp" }
 
   -- scala
-  use { 'scalameta/nvim-metals', ft = { 'scala', 'sbt' }, config = "require('settings.metals').setup()" }
+  use { 'scalameta/nvim-metals',  config = "require('settings.metals').setup()" }
 
   -- clojure
   use { 'Olical/conjure' }

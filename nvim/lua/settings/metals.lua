@@ -34,6 +34,9 @@ M.setup = function()
     require("metals").setup_dap()
   end
 
+  vim.cmd([[autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
+  vim.cmd([[autocmd FileType scala,sbt lua require("metals").initialize_or_attach(Metals_config)]])
+
 end
 
 return M
