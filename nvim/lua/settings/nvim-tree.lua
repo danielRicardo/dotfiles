@@ -11,18 +11,24 @@ local M = {}
 
 M.setup = function ()
   tree.setup {
-    auto_close = hide,
+    auto_close = true,
     hijack_cursor = true,
+    open_on_setup = true,
+    update_cwd = true,
     diagnostics = {
       enable = true,
     },
     view = {
-      width = '20%',
+      width = 30,
       auto_resize = true,
     },
     update_focused_file = {
       enable = true,
       update_cwd = false,
+    },
+    filters = {
+      dotfiles = false,
+      custom = { '.git' },
     },
   }
 
