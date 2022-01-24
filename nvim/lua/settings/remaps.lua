@@ -84,4 +84,4 @@ map('t', '<C-o>', '<C-\\><C-n>')
 map('n', '<leader>df', '0y/))\\n<CR><C-w>npdf(:%s/\\n//g<CR>:%s/\\v, ?\\(/, (/g<CR>:s/, /\\r/g<CR>gg:%s/\\v\\) did.*t\\(/\\r\\r/<CR>ggvip:sort<CR>vip:Linediff<CR>Gvip:sort<CR>vip:Linediff<CR>')
 
 -- nvim-tree
-map('n', '<leader>e', ':NvimTreeFocus<CR>')
+map('n', '<leader>e', ':NvimTreeToggle<CR>')

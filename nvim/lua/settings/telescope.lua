@@ -1,9 +1,16 @@
 -- https://github.com/nvim-telescope/telescope.nvim
+
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  vim.notify("Unable to load telescope", "warn")
+  return
+end
+
 local M = {}
 
 M.setup = function()
   local actions = require("telescope.actions")
-  require("telescope").setup({
+  telescope.setup({
     defaults = {
       file_ignore_patterns = { "target", "node_modules", "parser.c", "out" },
       prompt_prefix = "❯",
@@ -17,7 +24,7 @@ M.setup = function()
     },
   })
 
-  require("telescope").load_extension("fzy_native")
+  telescope.load_extension("fzy_native")
 end
 
 -- This is mainly for Metals since we don't respond to "" as a query to get all

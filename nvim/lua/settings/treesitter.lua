@@ -1,9 +1,15 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 
+local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  vim.notify("Unable to load Treesitter. Syntax highlighting will be limited", "warn")
+  return
+end
+
 local M = {}
 
 M.setup = function()
-  require("nvim-treesitter.configs").setup({
+  configs.setup({
     ensure_installed = {
       'bash',
       'clojure',

@@ -3,6 +3,8 @@
 ----------------------------------
 
 local plugins = function (use)
+  use { 'wbthomason/packer.nvim' }
+  
   -- vim enhancements
   use { 'AndrewRadev/linediff.vim' }
   use { 'christoomey/vim-sort-motion' }
@@ -11,14 +13,14 @@ local plugins = function (use)
   use { 'nvim-lua/popup.nvim' }
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-surround' }
-  use { 'vim-test/vim-test', config = "require('settings.vim-test')" }
-  use { 'nvim-telescope/telescope.nvim', config = "require('settings.telescope').setup()", requires = {  'nvim-telescope/telescope-fzy-native.nvim' } }
-  use { 'kyazdani42/nvim-tree.lua', config = "require('settings.nvim-tree').setup()" }
-  use { 'rcarriga/nvim-notify', config = "require('settings.notify').setup()" }
+  use { 'vim-test/vim-test' }
+  use { 'nvim-telescope/telescope.nvim', requires = {  'nvim-telescope/telescope-fzy-native.nvim' } }
+  use { 'kyazdani42/nvim-tree.lua' }
+  use { 'rcarriga/nvim-notify' }
 
   -- git related
   use { 'junegunn/gv.vim' }
-  use { 'mhinz/vim-signify', config = "require('settings.signify').setup()" }
+  use { 'mhinz/vim-signify' }
   use { 'tpope/vim-fugitive' }
   use { 'tpope/vim-rhubarb' }
 
@@ -27,15 +29,15 @@ local plugins = function (use)
   use { 'rafamadriz/friendly-snippets' }
 
   -- LSP
-  use { 'mfussenegger/nvim-dap', config = "require('settings.dap').setup()" }
-  use { 'neovim/nvim-lspconfig', config = "require('settings.lsp').setup()" }
+  use { 'mfussenegger/nvim-dap' }
+  use { 'neovim/nvim-lspconfig' }
   use { 'williamboman/nvim-lsp-installer' }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = "require('settings.treesitter').setup()" }
-  use { 'windwp/nvim-autopairs' , config = "require('settings.autopairs').setup()", after = { "nvim-treesitter", "nvim-cmp" } }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'windwp/nvim-autopairs' } --, after = { "nvim-treesitter", "nvim-cmp" } }
   use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
   use { 'nvim-treesitter/nvim-treesitter-refactor', after = "nvim-treesitter" }
   use { 'nvim-treesitter/playground' }
-  use { 'hrsh7th/nvim-cmp', config = "require('settings.cmp').setup()", requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-nvim-lsp' }, after = "LuaSnip" }
+  use { 'hrsh7th/nvim-cmp', requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-nvim-lsp' }}--, after = "LuaSnip" }
   use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
   use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
   use { 'andersevenrud/cmp-tmux', after = "nvim-cmp" }
@@ -52,15 +54,13 @@ local plugins = function (use)
 
   -- look and feel
   use { "projekt0n/github-nvim-theme" }
-  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = "require('settings.lualine').setup()" }
+  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
   -- external environment communication
   use { 'christoomey/vim-tmux-navigator' }
   use { 'tpope/vim-dispatch' }
   use { 'radenling/vim-dispatch-neovim' }
 
-
-  use { 'wbthomason/packer.nvim', opt = true}
 end
 
 ----------------------------------

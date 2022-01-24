@@ -1,8 +1,9 @@
 -- https://github.com/windwp/nvim-autopairs
 
-local status_ok, autopairs = pcall(require, 'nvim-autopairs')
+local status_ok, autopairs = pcall(require, "nvim-autopairs")
 if not status_ok then
   vim.notify("Unable to load autopairs", "warn")
+  print("Error mesage: ", autoparis)
   return
 end
 
@@ -15,7 +16,7 @@ M.setup = function()
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({map_char = {tex = ''}}))
 
   -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
-  cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "clojure"
+  -- cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "clojure"
 
 end
 
