@@ -37,7 +37,6 @@ local plugins = function (use)
   use { 'windwp/nvim-autopairs' } --, after = { "nvim-treesitter", "nvim-cmp" } }
   use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
   use { 'nvim-treesitter/nvim-treesitter-refactor', after = "nvim-treesitter" }
-  use { 'nvim-treesitter/playground' }
   use { 'hrsh7th/nvim-cmp', requires = { 'onsails/lspkind-nvim', 'hrsh7th/cmp-nvim-lsp' }}--, after = "LuaSnip" }
   use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
   use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
