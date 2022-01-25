@@ -31,7 +31,7 @@ map('n', '<leader>_', ':wincmd _<cr>:wincmd \\|<cr>')
 map('n', '<leader>=', ':wincmd =<cr>')
 
 -- telescope
-map("n", "<leader>ff", [[<cmd>lua require"telescope.builtin".find_files()<CR>]])
+map("n", "<leader>ff", [[<cmd>lua require"telescope.builtin".find_files({hidden=true})<CR>]])
 map("n", "<leader>lg", [[<cmd>lua require"telescope.builtin".live_grep()<CR>]])
 map("n", "<leader>fb", [[<cmd>lua require"telescope.builtin".file_browser()<CR>]])
 map("n", "<leader>mc", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
