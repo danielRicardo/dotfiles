@@ -13,6 +13,9 @@ typeset -U PATH
 
 export PATH
 
+XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_CONFIG_HOME
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
