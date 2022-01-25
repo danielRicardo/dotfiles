@@ -1,0 +1,13 @@
+# MEH: cmd + alt + ctrl
+
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+# Close active application
+cmd + alt + ctrl - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
+# Fullscreen toggle
+cmd + alt + ctrl - f : yabai -m window --toggle zoom-fullscreen
+
+# App launchers:
+## Terminal (Alacritty):
+hyper - t : /Applications/Alacritty.app/Contents/MacOS/alacritty
