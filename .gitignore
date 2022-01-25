@@ -11,4 +11,4 @@ unify/
 bin/s3_partitions_rm.sh
 bin/reset_section.sh
 
-nvim/plugin/packer_compiled.lua
+**/packer_compiled.lua
