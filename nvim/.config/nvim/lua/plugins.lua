@@ -4,7 +4,7 @@
 
 local plugins = function (use)
   use { 'wbthomason/packer.nvim' }
-  
+
   -- vim enhancements
   use { 'AndrewRadev/linediff.vim' }
   use { 'christoomey/vim-sort-motion' }
@@ -17,6 +17,7 @@ local plugins = function (use)
   use { 'nvim-telescope/telescope.nvim', requires = {  'nvim-telescope/telescope-fzy-native.nvim' } }
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'rcarriga/nvim-notify' }
+  use { 'numToStr/Comment.nvim', config = "require('Comment').setup()" }
 
   -- git related
   use { 'junegunn/gv.vim' }
