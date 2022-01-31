@@ -105,8 +105,12 @@ export PS1="${usercolor}\u@\h${pathcolor} \w${resetcolors}\$(__git_ps1)\\$ "
 
 
 # list directories before files (if installed version of ls allows this)
-if man ls | grep group-directories-first >&/dev/null; then
+if which exa >&/dev/null; then
+  alias ls='exa --group-directories-first --git'
+elif which man >&/dev/null && man ls | grep group-directories-first >&/dev/null ; then
   alias ls='ls --color=auto --group-directories-first'
+else
+  alias ls='ls --color=auto'
 fi
 
 # default settings for less. You may also want to disable line wrapping with -S

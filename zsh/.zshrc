@@ -109,7 +109,11 @@ fi
 
 # list directories before files (if installed version of ls allows this)
 if which exa >&/dev/null; then
-  alias ls='exa --color=auto --group-directories-first'
+  alias ls='exa --group-directories-first --git'
+elif which man >&/dev/null && man ls | grep group-directories-first >&/dev/null ; then
+  alias ls='ls --color=auto --group-directories-first'
+else
+  alias ls='ls --color=auto'
 fi
 
 # glab aliases
