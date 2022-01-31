@@ -108,8 +108,8 @@ fi
 
 
 # list directories before files (if installed version of ls allows this)
-if man ls | grep group-directories-first >&/dev/null; then
-  alias ls='ls --color=auto --group-directories-first'
+if which exa >&/dev/null; then
+  alias ls='exa --color=auto --group-directories-first'
 fi
 
 # glab aliases
