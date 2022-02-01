@@ -164,3 +164,9 @@ if [[ "$(hostname)" == "danielricardo.af" ]]; then
   source $HOME/bin/af_scripts
 fi
 
+if ! pgrep ssh-agent &>/dev/null ; then
+  eval $(ssh-agent | tee ~/.ssh/agent.env) &> /dev/null
+  ssh-add $HOME/.ssh/id_ed25519
+else
+  source ~/.ssh/agent.env &> /dev/null
+fi
