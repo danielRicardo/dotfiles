@@ -16,6 +16,9 @@ export PATH
 XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CONFIG_HOME
 
+DOTFILES="$HOME/workspace/dotfiles"
+export DOTFILES
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -92,11 +95,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias v="nvim"
 
-EDITOR="/usr/local/bin/nvim"
-DOTFILES="$HOME/workspace/dotfiles"
+if which nvim &>/dev/null; then
+  alias v="nvim"
+  alias vim="nvim"
+  EDITOR="/usr/local/bin/nvim"
+else
+  alias v="vim"
+fi
 
+if which stow &>/dev/null; then
+  alias dot="stow -d ${DOTFILES} -t ${HOME}"
+fi
 
 if [ -f "$HOME/.bash_aliases" ]; then
   source "$HOME/.bash_aliases"
