@@ -5,7 +5,7 @@ tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "kokeishiya/formulae" "git@github.com:koekeishiya/homebrew-formulae.git"
+tap "kokeishiya/homebrew-formulae" "git@github.com:koekeishiya/homebrew-formulae.git"
 
 brew "awscli"
 brew "bat"

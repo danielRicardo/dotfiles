@@ -1,13 +1,102 @@
 # MEH: cmd + alt + ctrl
 
-ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+# # Navigation
+# cmd + ctrl - h : yabai -m window --focus west
+# cmd + ctrl - j : yabai -m window --focus south
+# cmd + ctrl - k : yabai -m window --focus north
+# cmd + ctrl - l : yabai -m window --focus east
 
-# Close active application
-cmd + alt + ctrl - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+# # Moving windows
+# cmd + alt + ctrl - o : yabai -m window --warp west
+# cmd + alt + ctrl - y : yabai -m window --warp south
+# cmd + alt + ctrl - p : yabai -m window --warp north
+# cmd + alt + ctrl - u : yabai -m window --warp east
 
 # Fullscreen toggle
 cmd + alt + ctrl - f : yabai -m window --toggle zoom-fullscreen
 
+# Resize windows
+cmd + alt + ctrl - p : yabai -m window --resize right:100:0; yabai -m window --resize left:100:0
+cmd + alt + ctrl - y : yabai -m window --resize right:-100:0; yabai -m window --resize left:-100:0
+cmd + alt + ctrl - u : yabai -m window --resize bottom:0:100
+
+# Equalize size of windows
+ctrl + alt - e : yabai -m space --balance
+
+# # focus display
+# cmd + alt + ctrl - 1 : yabai -m display --focus 1
+# cmd + alt + ctrl - 2 : yabai -m display --focus 2
+# cmd + alt + ctrl - 3 : yabai -m display --focus 3
+# cmd + alt + ctrl - "tab" : yabai -m display --focus next || yabai -m display --focus first; yabai -m space --focus next
+
+# # Close active application
+ cmd + alt + ctrl - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
 # App launchers:
-## Terminal (Alacritty):
-hyper - t : /Applications/Alacritty.app/Contents/MacOS/alacritty
+## Terminal (Alacritty) - new:
+hyper - t : open -na /Applications/Alacritty.app
+## Terminal (Alacritty) - existing:
+hyper - 0x27 : open -a /Applications/Alacritty.app
+## Logseq:
+hyper - l : open -a /Applications/Logseq.app
+## Firefox:
+hyper - f : open -a /Applications/Firefox.app
+## WhatsApp
+hyper - w : open -a /Applications/WhatsApp.app
+## Slack
+hyper - s : open -a /Applications/Slack.app
+## Spotify
+hyper - p : open -a /Applications/Spotify.appChrome.app
+## Chrome
+hyper - c : open -a /Applications/Google\ Chrome.app/
+## Authy
+hyper - a : open -a /Applications/Authy\ Desktop.app
+
+#############################
+#
+#SKHD STUFF
+
+# if you're having troubles finding key codes for a key just type skhd --observe in a terminal and type a key. Pretty cool! Or just check the wiki.
+
+## HYPER == SHIFT + CMD + ALT + OPTION
+
+## Quickly restart the yabai launch agent
+hyper - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+## swap window
+cmd + alt + ctrl - 0x1E : yabai -m window --swap east # ]
+cmd + alt + ctrl - 0x21 : yabai -m window --swap west # [
+# shift + alt - j : yabai -m window --swap south
+# shift + alt - k : yabai -m window --swap north
+
+## send window to monitor and follow focus
+cmd + alt + ctrl + shift - 0 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -l
+cmd + alt + ctrl + shift - 9 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -r
+
+## send window to specific monitor
+cmd + alt + ctrl - 1 : yabai -m window --display 1; yabai -m display --focus 1
+cmd + alt + ctrl - 2 : yabai -m window --display 2; yabai -m display --focus 2
+cmd + alt + ctrl - 3 : yabai -m window --display 3; yabai -m display --focus 3
+
+## increase window size
+#shift + alt - a : yabai -m window --resize left:-20:0
+#shift + alt - s : yabai -m window --resize bottom:0:20
+#shift + alt - w : yabai -m window --resize top:0:-20
+#shift + alt - d : yabai -m window --resize right:20:0
+
+## decrease window size
+#shift + cmd - a : yabai -m window --resize left:20:0
+#shift + cmd - s : yabai -m window --resize bottom:0:-20
+#shift + cmd - w : yabai -m window --resize top:0:20
+#shift + cmd - d : yabai -m window --resize right:-20:0
+
+## rotate tree 90
+cmd + alt + ctrl - r : yabai -m space --rotate 90
+
+## flip the tree vertically
+hyper - 4 : yabai -m space --mirror y-axis
+# mirror tree y-axis
+#alt - y : yabai -m space --mirror y-axis
+## mirror tree x-axis
+#alt - x : yabai -m space --mirror x-axis
+
