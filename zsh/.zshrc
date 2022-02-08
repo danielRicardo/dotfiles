@@ -93,7 +93,6 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 if which nvim &>/dev/null; then
@@ -101,6 +100,7 @@ if which nvim &>/dev/null; then
   alias vim="nvim"
   EDITOR="/usr/local/bin/nvim"
 else
+  EDITOR "/usr/bin/vim"
   alias v="vim"
 fi
 
@@ -125,6 +125,8 @@ elif which man >&/dev/null && man ls | grep group-directories-first >&/dev/null 
 else
   alias ls='ls --color=auto'
 fi
+
+alias ll="ls -lah"
 
 # glab aliases
 alias gmcf='glab mr create --fill'
