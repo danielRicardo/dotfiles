@@ -1,8 +1,16 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-	name = daniel.ricardo
-	email = daniel.ricardo@appsflyer.com
+	name = Daniel Ricardo
+  email = daniel.k.ricardo@gmail.com
+  username = danielRicardo
+
+[github]
+  email = daniel.k.ricardo@gmail.com
+  user = danielRicardo
+
+[gitlab]
+  email = daniel.ricardo@appsflyer.com
+  user = daniel.ricardo
+
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = [A-Z0-9]{20}
@@ -11,8 +19,18 @@
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+
+[difftool]
+  prompt = true
+
+[diff]
+  tool = nvimdiff
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+  
 [alias]
-        dt = difftool -t vimdiff
 	unstage = reset HEAD --
+
 [pull]
 	ff = only
