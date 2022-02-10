@@ -3,7 +3,7 @@
 local status_ok, autopairs = pcall(require, "nvim-autopairs")
 if not status_ok then
   vim.notify("Unable to load autopairs", "warn")
-  print("Error mesage: ", autoparis)
+  print("Error mesage: ", autopairs)
   return
 end
 
