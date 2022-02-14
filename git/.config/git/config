@@ -1,5 +1,8 @@
+[core]
+  editor = nvim
+
 [user]
-	name = Daniel Ricardo
+  name = Daniel Ricardo
   email = daniel.k.ricardo@gmail.com
   username = danielRicardo
 
