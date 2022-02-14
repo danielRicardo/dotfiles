@@ -29,8 +29,11 @@ ctrl + alt - e : yabai -m space --balance
 # cmd + alt + ctrl - 3 : yabai -m display --focus 3
 # cmd + alt + ctrl - "tab" : yabai -m display --focus next || yabai -m display --focus first; yabai -m space --focus next
 
-# # Close active application
+# Close active application
  cmd + alt + ctrl - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+
+# Minimize active window
+cmd + alt + ctrl - h : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --minimize)
 
 # App launchers:
 ## Terminal (Alacritty) - new:
