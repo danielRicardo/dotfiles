@@ -35,6 +35,9 @@ ctrl + alt - e : yabai -m space --balance
 # Minimize active window
 cmd + alt + ctrl - h : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --minimize)
 
+# Toggle split v/h for active window
+cmd + alt + ctrl - s : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --toggle split)
+
 # App launchers:
 ## Terminal (Alacritty) - new:
 hyper - t : open -na /Applications/Alacritty.app
