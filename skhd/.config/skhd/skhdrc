@@ -1,10 +1,10 @@
 # MEH: cmd + alt + ctrl
 
-# # Navigation
-# cmd + ctrl - h : yabai -m window --focus west
-# cmd + ctrl - j : yabai -m window --focus south
-# cmd + ctrl - k : yabai -m window --focus north
-# cmd + ctrl - l : yabai -m window --focus east
+# Navigation
+cmd + ctrl - h : yabai -m window --focus west
+cmd + ctrl - j : yabai -m window --focus south
+cmd + ctrl - k : yabai -m window --focus north
+cmd + ctrl - l : yabai -m window --focus east
 
 # # Moving windows
 # cmd + alt + ctrl - o : yabai -m window --warp west
