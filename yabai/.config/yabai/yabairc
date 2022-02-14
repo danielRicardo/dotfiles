@@ -39,6 +39,7 @@ yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Cato$" manage=off
+yabai -m rule --add app="^Authy$" manage=off
 
 # Mouse settings
 yabai -m config mouse_follows_focus          off
