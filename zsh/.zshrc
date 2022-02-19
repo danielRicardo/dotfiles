@@ -9,6 +9,11 @@ path+="$HOME/.local/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 path+="$HOME/.rvm/bin"
 
+GLOBAL_NPM_PACKAGES_DIR="$HOME/.npm-packages"
+which npm &>/dev/null  && \
+  npm config set prefix "$GLOBAL_NPM_PACKAGES_DIR" && \
+  path+="$GLOBAL_NPM_PACKAGES_DIR/bin" 
+
 typeset -U PATH
 
 export PATH
@@ -104,18 +109,11 @@ else
   alias v="vim"
 fi
 
-if which stow &>/dev/null; then
-  alias dot="stow -d ${DOTFILES} -t ${HOME}"
-fi
+which stow &>/dev/null && alias dot="stow -d ${DOTFILES} -t ${HOME}"
 
-if [ -f "$HOME/.bash_aliases" ]; then
-  source "$HOME/.bash_aliases"
-fi
+[ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
-if [ -f "$HOME/.fzf.zsh" ]; then
-  source "$HOME/.fzf.zsh" 
-fi
-
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh" 
 
 # list directories before files (if installed version of ls allows this)
 if which exa >&/dev/null; then
@@ -172,9 +170,7 @@ COURSIER_INSTALL_DIR="$HOME/bin"
 
 source $DOTFILES/zsh/functions
 
-if [[ "$(hostname)" == "danielricardo.af" ]]; then
-  source $HOME/bin/af_scripts
-fi
+[[ "$(hostname)" == "danielricardo.af" ]] && source $HOME/bin/af_scripts
 
 if ! pgrep ssh-agent &>/dev/null ; then
   eval $(ssh-agent | tee ~/.ssh/agent.env) &> /dev/null
