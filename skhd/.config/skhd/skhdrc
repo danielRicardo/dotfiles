@@ -16,9 +16,9 @@ cmd + ctrl - l : yabai -m window --focus east
 cmd + alt + ctrl - f : yabai -m window --toggle zoom-fullscreen
 
 # Resize windows
-cmd + alt + ctrl - p : yabai -m window --resize right:100:0; yabai -m window --resize left:100:0
-cmd + alt + ctrl - y : yabai -m window --resize right:-100:0; yabai -m window --resize left:-100:0
-cmd + alt + ctrl - u : yabai -m window --resize bottom:0:100
+cmd + alt + ctrl - 0x1E : yabai -m window --resize right:100:0; yabai -m window --resize left:100:0
+cmd + alt + ctrl - 0x21 : yabai -m window --resize right:-100:0; yabai -m window --resize left:-100:0
+# cmd + alt + ctrl - u : yabai -m window --resize bottom:0:100
 
 # Equalize size of windows
 ctrl + alt - e : yabai -m space --balance
@@ -33,7 +33,7 @@ ctrl + alt - e : yabai -m space --balance
  cmd + alt + ctrl - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
 # Minimize active window
-cmd + alt + ctrl - h : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --minimize)
+cmd + alt + ctrl - m : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --minimize)
 
 # Toggle split v/h for active window
 cmd + alt + ctrl - s : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --toggle split)
@@ -70,10 +70,16 @@ hyper - a : open -a /Applications/Authy\ Desktop.app
 hyper - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 ## swap window
-cmd + alt + ctrl - 0x1E : yabai -m window --swap east # ]
-cmd + alt + ctrl - 0x21 : yabai -m window --swap west # [
-# shift + alt - j : yabai -m window --swap south
-# shift + alt - k : yabai -m window --swap north
+cmd + alt + ctrl - l : yabai -m window --swap east # ]
+cmd + alt + ctrl - h : yabai -m window --swap west # [
+cmd + alt + ctrl - j : yabai -m window --swap south # [
+cmd + alt + ctrl - k : yabai -m window --swap north # [
+
+## warp window
+cmd + alt + ctrl - o : yabai -m window --warp east # ]
+cmd + alt + ctrl - y : yabai -m window --warp west # [
+cmd + alt + ctrl - u : yabai -m window --warp south # [
+cmd + alt + ctrl - i : yabai -m window --warp north # [
 
 ## send window to monitor and follow focus
 cmd + alt + ctrl + shift - 0 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -l
