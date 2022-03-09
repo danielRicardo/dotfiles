@@ -42,6 +42,7 @@ yabai -m rule --add app="Cato" sticky=on manage=off layer=above
 yabai -m rule --add app="Authy" sticky=on manage=off layer=above
 yabai -m rule --add title="Picture-in-Picture" sticky=on manage=off layer=above
 yabai -m rule --add app="^Archive Utility*" manage=off layer=above
+yabai -m rule --add app="^Spotify*" manage=off layer=above
 
 # Mouse settings
 yabai -m config mouse_follows_focus          off
