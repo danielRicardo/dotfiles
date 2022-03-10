@@ -53,7 +53,7 @@ local plugins = function (use)
   use { 'tpope/vim-sexp-mappings-for-regular-people', after = "vim-sexp" }
 
   -- look and feel
-  use { "projekt0n/github-nvim-theme" }
+  use { "projekt0n/github-nvim-theme", commit = '715c554' }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
   -- external environment communication
