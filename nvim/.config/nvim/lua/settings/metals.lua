@@ -27,15 +27,30 @@ M.setup = function()
 
   Metals_config.on_attach = function(client, bufnr)
 
-    vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
-    vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
-    vim.cmd([[autocmd BufEnter,CursorHold,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]])
+    vim.api.nvim_create_autocmd("CursorHold <buffer>", {
+      command = "lua vim.lsp.buf.document_highlight()"
+    })
+
+    vim.api.nvim_create_autocmd("CursorMoved <buffer>", {
+      command = "lua vim.lsp.buf.clear_references()"
+    })
+
+    vim.api.nvim_create_autocmd("BufEnter,CursorHold,InsertLeave <buffer>", {
+      command = "lua vim.lsp.codelens.refresh()"
+    })
 
     require("metals").setup_dap()
   end
 
-  vim.cmd([[autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
-  vim.cmd([[autocmd FileType scala,sbt lua require("metals").initialize_or_attach(Metals_config)]])
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "scala" },
+    command = "setlocal omnifunc=v:lua.vim.lsp.omnifunc"
+  })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "scala", "sbt", "java" },
+    command = "lua require('metals').initialize_or_attach(Metals_config)"
+  })
 
 end
 
