@@ -11,7 +11,6 @@ local M = {}
 
 M.setup = function ()
   tree.setup {
-    auto_close = true,
     hijack_cursor = true,
     open_on_setup = true,
     update_cwd = true,
@@ -20,7 +19,6 @@ M.setup = function ()
     },
     view = {
       width = 30,
-      auto_resize = true,
     },
     update_focused_file = {
       enable = true,
@@ -29,6 +27,11 @@ M.setup = function ()
     filters = {
       dotfiles = false,
       custom = { '.git' },
+    },
+    actions = {
+      open_file = {
+        resize_window = true,
+      },
     },
   }
 
