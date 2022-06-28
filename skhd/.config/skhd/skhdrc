@@ -57,6 +57,8 @@ hyper - p : open -a /Applications/Spotify.appChrome.app
 hyper - c : open -a /Applications/Google\ Chrome.app/
 ## Authy
 hyper - a : open -a /Applications/Authy\ Desktop.app
+## Notion
+hyper - n : open -a /Applications/Notion.app
 
 #############################
 #
