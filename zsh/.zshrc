@@ -9,6 +9,8 @@ path+="$HOME/.local/bin"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 path+="$HOME/.rvm/bin"
 
+path+="$HOME/Library/Application Support/Coursier/bin"
+
 GLOBAL_NPM_PACKAGES_DIR="$HOME/.npm-packages"
 which npm &>/dev/null  && \
   npm config set prefix "$GLOBAL_NPM_PACKAGES_DIR" && \
@@ -26,6 +28,7 @@ export DOTFILES
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
 
 ZSH_THEME="intheloop"
 
@@ -154,6 +157,8 @@ bindkey '^e' edit-command-line
 VI_MODE_SET_CURSOR=true
 
 # Use vim keys instead of arrows in menuselect
+zstyle ':completion:*' menu select
+
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -168,9 +173,16 @@ ZSH_TMUX_AUTOQUIT=true
 # Coursier Settings
 COURSIER_INSTALL_DIR="$HOME/bin"
 
+if which pyenv >&/dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi
+
 source $DOTFILES/zsh/functions
 
-[[ "$(hostname)" == "danielricardo.af" ]] && source $HOME/bin/af_scripts
+# find /usr/local/share -user danielricardo | xargs chmod -h g-w,o-w
+[[ "$(hostname)" == "danielRicardo" ]] && source $HOME/bin/af_scripts
 
 if ! pgrep ssh-agent &>/dev/null ; then
   eval $(ssh-agent | tee ~/.ssh/agent.env) &> /dev/null
@@ -178,3 +190,12 @@ if ! pgrep ssh-agent &>/dev/null ; then
 else
   source ~/.ssh/agent.env &> /dev/null
 fi
+
+
+# compinit for AF-CLI autocompletion
+# autoload -Uz compinit
+# compinit
+#
+#
+# # Autocompletion for AF-CLI
+# [ -f ~/.af/completion.sh ] && source ~/.af/completion.sh
