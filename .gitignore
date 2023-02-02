@@ -10,5 +10,8 @@ bin/exp_report.sh
 unify/
 bin/s3_partitions_rm.sh
 bin/reset_section.sh
+karabiner/.config/karabiner/automatic_backups/
+
+
 
 **/packer_compiled.lua
