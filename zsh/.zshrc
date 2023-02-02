@@ -191,6 +191,8 @@ else
   source ~/.ssh/agent.env &> /dev/null
 fi
 
+eval "$(starship init zsh)"
+
 
 # compinit for AF-CLI autocompletion
 # autoload -Uz compinit
