@@ -182,7 +182,15 @@ fi
 source $DOTFILES/zsh/functions
 
 # find /usr/local/share -user danielricardo | xargs chmod -h g-w,o-w
-[[ "$(hostname)" == "danielRicardo" ]] && source $HOME/bin/af_scripts
+if [[ "$(hostname)" == "danielRicardo" ]]; then
+  source $HOME/bin/af_scripts
+  compinit for AF-CLI autocompletion
+  autoload -Uz compinit
+  compinit
+
+  # Autocompletion for AF-CLI
+  [ -f ~/.af/completion.sh ] && source ~/.af/completion.sh
+fi
 
 if ! pgrep ssh-agent &>/dev/null ; then
   eval $(ssh-agent | tee ~/.ssh/agent.env) &> /dev/null
@@ -193,11 +201,4 @@ fi
 
 eval "$(starship init zsh)"
 
-
-# compinit for AF-CLI autocompletion
-# autoload -Uz compinit
-# compinit
-#
-#
-# # Autocompletion for AF-CLI
-# [ -f ~/.af/completion.sh ] && source ~/.af/completion.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
