@@ -48,7 +48,7 @@ hyper - w : open -a /Applications/WhatsApp.app
 ## Slack
 hyper - s : open -a /Applications/Slack.app
 ## Spotify
-hyper - p : open -a /Applications/Spotify.appChrome.app
+hyper - p : open -a /Applications/Spotify.app
 ## Chrome
 hyper - c : open -a /Applications/Google\ Chrome.app/
 ## Authy
