@@ -18,6 +18,15 @@ local plugins = function (use)
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'rcarriga/nvim-notify' }
   use { 'numToStr/Comment.nvim', config = "require('Comment').setup()" }
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+    },
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
 
   -- git related
   use { 'junegunn/gv.vim' }
@@ -30,9 +39,10 @@ local plugins = function (use)
   use { 'rafamadriz/friendly-snippets' }
 
   -- LSP
-  use { 'mfussenegger/nvim-dap' }
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
   use { 'neovim/nvim-lspconfig' }
-  use { 'williamboman/nvim-lsp-installer' }
+  use { 'jose-elias-alvarez/null-ls.nvim' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'windwp/nvim-autopairs' } --, after = { "nvim-treesitter", "nvim-cmp" } }
   use { 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
@@ -41,6 +51,11 @@ local plugins = function (use)
   use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
   use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
   use { 'andersevenrud/cmp-tmux', after = "nvim-cmp" }
+  use { 'glepnir/lspsaga.nvim', branch = "main" }
+
+  -- DAP
+  use { 'mfussenegger/nvim-dap' }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
   -- scala
   use { 'scalameta/nvim-metals',  config = "require('settings.metals').setup()" }
@@ -70,7 +85,7 @@ end
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
   vim.notify('Installed Packer. Please restart Neovim')
   vim.cmd [[ packadd packer.nvim ]]
 end
@@ -97,7 +112,7 @@ return packer.startup({
   function(use)
     plugins(use)
 
-    if packer_bootstrap then
+    if PACKER_BOOTSTRAP then
       require('packer').sync()
     end
 

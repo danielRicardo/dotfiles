@@ -1,5 +1,4 @@
 local g = vim.g
-local v = vim.v
 
 g['test#strategy'] = {
   nearest = 'neovim',

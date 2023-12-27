@@ -145,8 +145,9 @@ M.setup = function()
       select = false,
       },
 
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+
+    window = {
+      documentation = cmp.config.window.bordered()
     },
 
     experimental = {
@@ -156,7 +157,8 @@ M.setup = function()
   }
 
   -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig')['clojure_lsp'].setup {
     capabilities = capabilities

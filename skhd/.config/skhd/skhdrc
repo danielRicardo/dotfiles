@@ -1,5 +1,3 @@
-# MEH: cmd + alt + ctrl
-
 # Navigation
 cmd + ctrl - h : yabai -m window --focus west
 cmd + ctrl - j : yabai -m window --focus south
@@ -7,40 +5,38 @@ cmd + ctrl - k : yabai -m window --focus north
 cmd + ctrl - l : yabai -m window --focus east
 
 # # Moving windows
-# cmd + alt + ctrl - o : yabai -m window --warp west
-# cmd + alt + ctrl - y : yabai -m window --warp south
-# cmd + alt + ctrl - p : yabai -m window --warp north
-# cmd + alt + ctrl - u : yabai -m window --warp east
+# meh - o : yabai -m window --warp west
+# meh - y : yabai -m window --warp south
+# meh - p : yabai -m window --warp north
+# meh - u : yabai -m window --warp east
 
 # Fullscreen toggle
-cmd + alt + ctrl - f : yabai -m window --toggle zoom-fullscreen
+meh - f : yabai -m window --toggle zoom-fullscreen
 
 # Resize windows
-cmd + alt + ctrl - 0x1E : yabai -m window --resize right:100:0; yabai -m window --resize left:100:0
-cmd + alt + ctrl - 0x21 : yabai -m window --resize right:-100:0; yabai -m window --resize left:-100:0
-# cmd + alt + ctrl - u : yabai -m window --resize bottom:0:100
+meh - 0x1E : yabai -m window --resize right:100:0; yabai -m window --resize left:100:0
+meh - 0x21 : yabai -m window --resize right:-100:0; yabai -m window --resize left:-100:0
+# meh - u : yabai -m window --resize bottom:0:100
 
 # Equalize size of windows
 ctrl + alt - e : yabai -m space --balance
 
 # # focus display
-# cmd + alt + ctrl - 1 : yabai -m display --focus 1
-# cmd + alt + ctrl - 2 : yabai -m display --focus 2
-# cmd + alt + ctrl - 3 : yabai -m display --focus 3
-# cmd + alt + ctrl - "tab" : yabai -m display --focus next || yabai -m display --focus first; yabai -m space --focus next
+# meh - 1 : yabai -m display --focus 1
+# meh - 2 : yabai -m display --focus 2
+# meh - 3 : yabai -m display --focus 3
+# meh - "tab" : yabai -m display --focus next || yabai -m display --focus first; yabai -m space --focus next
 
 # Close active application
- cmd + alt + ctrl - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
+meh - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
 # Minimize active window
-cmd + alt + ctrl - m : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --minimize)
+meh - m : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --minimize)
 
 # Toggle split v/h for active window
-cmd + alt + ctrl - s : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --toggle split)
+meh - s : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --toggle split)
 
 # App launchers:
-## Terminal (Alacritty) - new:
-hyper - t : open -na /Applications/Alacritty.app
 ## Terminal (Alacritty) - existing:
 hyper - 0x27 : open -a /Applications/Alacritty.app
 ## Logseq:
@@ -52,7 +48,7 @@ hyper - w : open -a /Applications/WhatsApp.app
 ## Slack
 hyper - s : open -a /Applications/Slack.app
 ## Spotify
-hyper - p : open -a /Applications/Spotify.appChrome.app
+hyper - p : open -a /Applications/Spotify.app
 ## Chrome
 hyper - c : open -a /Applications/Google\ Chrome.app/
 ## Authy
@@ -72,25 +68,25 @@ hyper - n : open -a /Applications/Notion.app
 hyper - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 ## swap window
-cmd + alt + ctrl - l : yabai -m window --swap east # ]
-cmd + alt + ctrl - h : yabai -m window --swap west # [
-cmd + alt + ctrl - j : yabai -m window --swap south # [
-cmd + alt + ctrl - k : yabai -m window --swap north # [
+meh - l : yabai -m window --swap east # ]
+meh - h : yabai -m window --swap west # [
+meh - j : yabai -m window --swap south # [
+meh - k : yabai -m window --swap north # [
 
 ## warp window
-cmd + alt + ctrl - o : yabai -m window --warp east # ]
-cmd + alt + ctrl - y : yabai -m window --warp west # [
-cmd + alt + ctrl - u : yabai -m window --warp south # [
-cmd + alt + ctrl - i : yabai -m window --warp north # [
+meh - o : yabai -m window --warp east # ]
+meh - y : yabai -m window --warp west # [
+meh - u : yabai -m window --warp south # [
+meh - i : yabai -m window --warp north # [
 
 ## send window to monitor and follow focus
-cmd + alt + ctrl + shift - 0 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -l
-cmd + alt + ctrl + shift - 9 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -r
+meh + shift - 0 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -l
+meh + shift - 9 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -r
 
 ## send window to specific monitor
-cmd + alt + ctrl - 1 : yabai -m window --display 1; yabai -m display --focus 1
-cmd + alt + ctrl - 2 : yabai -m window --display 2; yabai -m display --focus 2
-cmd + alt + ctrl - 3 : yabai -m window --display 3; yabai -m display --focus 3
+meh - 1 : yabai -m window --display 1; yabai -m display --focus 1
+meh - 2 : yabai -m window --display 2; yabai -m display --focus 2
+meh - 3 : yabai -m window --display 3; yabai -m display --focus 3
 
 ## increase window size
 #shift + alt - a : yabai -m window --resize left:-20:0
@@ -105,7 +101,7 @@ cmd + alt + ctrl - 3 : yabai -m window --display 3; yabai -m display --focus 3
 #shift + cmd - d : yabai -m window --resize right:-20:0
 
 ## rotate tree 90
-cmd + alt + ctrl - r : yabai -m space --rotate 90
+meh - r : yabai -m space --rotate 90
 
 ## flip the tree vertically
 hyper - 4 : yabai -m space --mirror y-axis

@@ -38,11 +38,12 @@ yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
 yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
-yabai -m rule --add app="Cato" sticky=on manage=off layer=above
 yabai -m rule --add app="Authy" sticky=on manage=off layer=above
 yabai -m rule --add title="Picture-in-Picture" sticky=on manage=off layer=above
 yabai -m rule --add app="^Archive Utility*" manage=off layer=above
-yabai -m rule --add app="^Spotify*" manage=off layer=above
+# yabai -m rule --add app="^Spotify*" manage=off layer=above
+yabai -m rule --add app="^Calculator$" manage=off layer=above
+yabai -m rule --add app="^Todoist$" manage=off layer=above
 
 # Mouse settings
 yabai -m config mouse_follows_focus          off
@@ -70,10 +71,6 @@ yabai -m config mouse_drop_action            swap
 #Limelight addon (Kill it and start it each time Yabai starts)
 # killall limelight &>/dev/null
 # limelight &>/dev/null &
-
-## If I close the active window, focus on any other visible window.
-yabai -m signal --add event=window_destroyed action="bash /Users/jesseskelton/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
-# yabai -m signal --add event=space_changed action="export CUR_ACTIVE_APP=\"iTerm2\""
 
 echo "yabai configuration loaded.."
 
