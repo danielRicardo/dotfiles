@@ -1,8 +1,27 @@
 local treesitter = { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter-textobjects",
+	},
 	opts = {
-		ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc", "python", "scala" },
+		ensure_installed = {
+			"bash",
+			"c",
+			"clojure",
+			"dockerfile",
+			"html",
+			"lua",
+			"luadoc",
+			"markdown",
+			"markdown_inline",
+			"python",
+			"scala",
+			"vim",
+			"vimdoc",
+			"yaml",
+		},
 		-- Autoinstall languages that are not installed
 		auto_install = true,
 		highlight = {
@@ -28,6 +47,105 @@ local treesitter = { -- Highlight, edit, and navigate code
 		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
 		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+
+		require("nvim-treesitter.configs").setup({
+			textobjects = {
+				select = {
+					enable = true,
+
+					-- Automatically jump forward to textobj, similar to targets.vim
+					lookahead = true,
+
+					keymaps = {
+						-- You can use the capture groups defined in textobjects.scm
+						["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
+						["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
+						["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
+						["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
+
+						-- works for javascript/typescript files (custom capture I created in after/queries/ecma/textobjects.scm)
+						["a:"] = { query = "@property.outer", desc = "Select outer part of an object property" },
+						["i:"] = { query = "@property.inner", desc = "Select inner part of an object property" },
+						["l:"] = { query = "@property.lhs", desc = "Select left part of an object property" },
+						["r:"] = { query = "@property.rhs", desc = "Select right part of an object property" },
+
+						["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
+						["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
+
+						["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
+						["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
+
+						["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
+						["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
+
+						["af"] = { query = "@call.outer", desc = "Select outer part of a function call" },
+						["if"] = { query = "@call.inner", desc = "Select inner part of a function call" },
+
+						["am"] = {
+							query = "@function.outer",
+							desc = "Select outer part of a method/function definition",
+						},
+						["im"] = {
+							query = "@function.inner",
+							desc = "Select inner part of a method/function definition",
+						},
+
+						["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
+						["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
+					},
+				},
+				swap = {
+					enable = true,
+					swap_next = {
+						["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
+						["<leader>n:"] = "@property.outer", -- swap object property with next
+						["<leader>nm"] = "@function.outer", -- swap function with next
+					},
+					swap_previous = {
+						["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
+						["<leader>p:"] = "@property.outer", -- swap object property with prev
+						["<leader>pm"] = "@function.outer", -- swap function with previous
+					},
+				},
+				move = {
+					enable = true,
+					set_jumps = true, -- whether to set jumps in the jumplist
+					goto_next_start = {
+						["]f"] = { query = "@call.outer", desc = "Next function call start" },
+						["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
+						["]c"] = { query = "@class.outer", desc = "Next class start" },
+						["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+						["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+
+						-- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+						-- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+						["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+						["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+					},
+					goto_next_end = {
+						["]F"] = { query = "@call.outer", desc = "Next function call end" },
+						["]M"] = { query = "@function.outer", desc = "Next method/function def end" },
+						["]C"] = { query = "@class.outer", desc = "Next class end" },
+						["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
+						["]L"] = { query = "@loop.outer", desc = "Next loop end" },
+					},
+					goto_previous_start = {
+						["[f"] = { query = "@call.outer", desc = "Prev function call start" },
+						["[m"] = { query = "@function.outer", desc = "Prev method/function def start" },
+						["[c"] = { query = "@class.outer", desc = "Prev class start" },
+						["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
+						["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
+					},
+					goto_previous_end = {
+						["[F"] = { query = "@call.outer", desc = "Prev function call end" },
+						["[M"] = { query = "@function.outer", desc = "Prev method/function def end" },
+						["[C"] = { query = "@class.outer", desc = "Prev class end" },
+						["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
+						["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
+					},
+				},
+			},
+		})
 	end,
 }
 
@@ -48,35 +166,6 @@ local lsp_config = { -- LSP Configuration & Plugins
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- Brief aside: **What is LSP?**
-		--
-		-- LSP is an initialism you've probably heard, but might not understand what it is.
-		--
-		-- LSP stands for Language Server Protocol. It's a protocol that helps editors
-		-- and language tooling communicate in a standardized fashion.
-		--
-		-- In general, you have a "server" which is some tool built to understand a particular
-		-- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-		-- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-		-- processes that communicate with some "client" - in this case, Neovim!
-		--
-		-- LSP provides Neovim with features like:
-		--  - Go to definition
-		--  - Find references
-		--  - Autocompletion
-		--  - Symbol Search
-		--  - and more!
-		--
-		-- Thus, Language Servers are external tools that must be installed separately from
-		-- Neovim. This is where `mason` and related plugins come into play.
-		--
-		-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-		-- and elegantly composed help section, `:help lsp-vs-treesitter`
-
-		--  This function gets run when an LSP attaches to a particular buffer.
-		--    That is to say, every time a new file is opened that is associated with
-		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-		--    function will be executed to configure the current buffer
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
@@ -177,18 +266,28 @@ local lsp_config = { -- LSP Configuration & Plugins
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			-- clangd = {},
-			-- gopls = {},
-			-- pyright = {},
-			-- rust_analyzer = {},
-			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-			--
-			-- Some languages (like typescript) have entire language plugins that can be useful:
-			--    https://github.com/pmizio/typescript-tools.nvim
-			--
-			-- But for many setups, the LSP (`tsserver`) will work just fine
-			-- tsserver = {},
-			--
+			yamlls = true,
+			-- yamlls = {
+			-- 	settings = {
+			-- 		yaml = {
+			-- 			schemaas = {
+			-- 				kubernetes = "*.yaml",
+			-- 				["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+			-- 				["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+			-- 				["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+			-- 				["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+			-- 				["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+			-- 				["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+			-- 				["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+			-- 				["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+			-- 				["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+			-- 				["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+			-- 				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+			-- 				["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 
 			lua_ls = {
 				-- cmd = {...},
@@ -200,7 +299,7 @@ local lsp_config = { -- LSP Configuration & Plugins
 							callSnippet = "Replace",
 						},
 						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						-- diagnostics = { disable = { 'missing-fields' } },
+						diagnostics = { disable = { "missing-fields" } },
 					},
 				},
 			},
