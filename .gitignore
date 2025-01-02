@@ -11,6 +11,8 @@ unify/
 bin/s3_partitions_rm.sh
 bin/reset_section.sh
 karabiner/.config/karabiner/automatic_backups/
+tmux/.config/tmux/plugins
+tmux*.log
 
 
 
