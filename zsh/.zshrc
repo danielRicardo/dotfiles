@@ -2,6 +2,7 @@
 path=("$HOME/bin" $path)
 path+="/usr/local/bin"
 path+="/usr/local/opt/fzf/bin"
+path+="/Users/danielricardo/Library/Android/sdk/platform-tools"
 
 # Add pip3 folder to path for all Scala tools
 path+="$HOME/.local/bin"
@@ -69,6 +70,7 @@ plugins=(
   git
   gitignore
   mvn
+  kubectl
   sbt
   timer
   tmux
