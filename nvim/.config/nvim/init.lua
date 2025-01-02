@@ -1,18 +1,20 @@
-require('settings.options')
-require('settings.remaps')
-require('plugins')
-require('settings.colorscheme')
-require('settings.cmp').setup()
-require('settings.lsp').setup()
-require('settings.telescope').setup()
-require('settings.treesitter').setup()
-require('settings.autopairs').setup()
-require('settings.signify').setup()
-require('settings.nvim-tree').setup()
-require('settings.lualine').setup()
-require('settings.vim-test')
-require('settings.notify').setup()
-require('settings.dap').setup()
-require('settings.metals').setup()
+require("defaults")
 
+-- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- if not (vim.uv or vim.loop).fs_stat(lazypath) then
+-- 	vim.fn.system({
+-- 		"git",
+-- 		"clone",
+-- 		"--filter=blob:none",
+-- 		"https://github.com/folke/lazy.nvim.git",
+-- 		"--branch=stable", -- latest stable release
+-- 		lazypath,
+-- 	})
+-- end
+-- vim.opt.rtp:prepend(lazypath)
+--
+require("config/lazy")
 
+-- require("lazy").setup("plugins")
+
+require("remaps")
