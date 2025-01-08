@@ -184,7 +184,7 @@ fi
 source $DOTFILES/zsh/functions
 
 # find /usr/local/share -user danielricardo | xargs chmod -h g-w,o-w
-if [[ "$(hostname)" == "danielRicardo" ]]; then
+if [ -f $HOME/bin/af_scripts ]; then
   source $HOME/bin/af_scripts
   compinit for AF-CLI autocompletion
   autoload -Uz compinit
