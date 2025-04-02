@@ -192,6 +192,20 @@ if [ -f $HOME/bin/af_scripts ]; then
 
   # Autocompletion for AF-CLI
   [ -f ~/.af/completion.sh ] && source ~/.af/completion.sh
+
+  # Source functions
+  if [ -d ~/.af_funcs ]; then
+    # Check if there are any files to source
+    if find ~/.af_funcs -type f | read; then
+      for f in ~/.af_funcs/*; do
+        # Check if the filename does not begin with 'autorun'
+        if [[ "$(basename "$f")" != autorun* ]]; then
+          source "$f"
+        fi
+      done
+    fi
+  fi
+  source ~/.af_funcs/autorun_vault.sh
 fi
 
 if ! pgrep ssh-agent &>/dev/null ; then
