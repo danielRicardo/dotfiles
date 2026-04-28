@@ -1,12 +1,5 @@
-import = [
-  "~/.config/alacritty/colors.toml",
-  "~/.config/alacritty/keybindings.toml",
-]
 
-live_config_reload = true
-working_directory = "None"
-
-[shell] 
+[terminal.shell]
 program = "/bin/zsh"
 
 [cursor]
@@ -46,3 +39,19 @@ title = "Alacritty"
 [window.padding]
 x = 6
 y = 6
+
+[general]
+
+live_config_reload = true
+working_directory = "None"
+import = [
+  "~/.config/alacritty/themes/github-dimmed.toml",
+  "~/.config/alacritty/keybindings.toml",
+]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b[13;2u"
+
+[terminal]
