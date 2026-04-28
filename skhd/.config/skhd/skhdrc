@@ -84,8 +84,8 @@ meh - u : yabai -m window --warp south # [
 meh - i : yabai -m window --warp north # [
 
 ## send window to monitor and follow focus
-meh + shift - 0 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -l
-meh + shift - 9 : /Users/danielricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -r
+meh + shift - 0 : /Users/daniel.ricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -l
+meh + shift - 9 : /Users/daniel.ricardo/.config/yabai/scripts/moveWindowAndFollowFocus.sh -r
 
 ## send window to specific monitor
 meh - 1 : yabai -m window --display 1; yabai -m display --focus 1
@@ -94,7 +94,6 @@ meh - 3 : yabai -m window --display 3; yabai -m display --focus 3
 
 ## switch to workspace (space)
 hyper - 5 : yabai -m space --focus 1
-hyper - 6 : yabai -m space --focus 2
 hyper - 7 : yabai -m space --focus 3
 hyper - 8 : yabai -m space --focus 4
 
