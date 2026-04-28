@@ -12,6 +12,10 @@ path+="$HOME/.rvm/bin"
 
 path+="$HOME/Library/Application Support/Coursier/bin"
 
+path+="$HOME/.jenv/bin"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 GLOBAL_NPM_PACKAGES_DIR="$HOME/.npm-packages"
 which npm &>/dev/null  && \
   npm config set prefix "$GLOBAL_NPM_PACKAGES_DIR" && \
@@ -31,7 +35,7 @@ export DOTFILES
 export ZSH="$HOME/.oh-my-zsh"
 
 
-ZSH_THEME="intheloop"
+ZSH_THEME=""
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -69,6 +73,7 @@ plugins=(
   fzf
   git
   gitignore
+  jira
   mvn
   kubectl
   sbt
@@ -77,8 +82,8 @@ plugins=(
   vi-mode
   vscode
   zsh-autosuggestions
+  z
   zsh-syntax-highlighting
-  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,8 +123,6 @@ which stow &>/dev/null && alias dot="stow -d ${DOTFILES} -t ${HOME}"
 
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh" 
-
 # list directories before files (if installed version of ls allows this)
 if which exa >&/dev/null; then
   alias ls='exa --group-directories-first --git'
@@ -158,6 +161,10 @@ bindkey '^e' edit-command-line
 # vi-mode settings
 VI_MODE_SET_CURSOR=true
 
+# command completion
+autoload -Uz compinit
+compinit
+
 # Use vim keys instead of arrows in menuselect
 zstyle ':completion:*' menu select
 
@@ -182,6 +189,7 @@ if which pyenv >&/dev/null; then
 fi
 
 source $DOTFILES/zsh/functions
+
 
 # find /usr/local/share -user danielricardo | xargs chmod -h g-w,o-w
 if [ -f $HOME/bin/af_scripts ]; then
@@ -215,6 +223,7 @@ else
   source ~/.ssh/agent.env &> /dev/null
 fi
 
+eval "$(jenv init -)"
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
