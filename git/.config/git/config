@@ -38,3 +38,10 @@
 
 [pull]
 	ff = only
+[url "git@gitlab.appsflyer.com:"]
+	insteadOf = https://gitlab.appsflyer.com
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.appsflyer.com:*/**"]
+	path = ~/.config/git/config-work
+[includeIf "hasconfig:remote.*.url:https://gitlab.appsflyer.com/**"]
+	path = ~/.config/git/config-work
