@@ -21,3 +21,4 @@ tmux*.log
 
 # glab CLI config — contains a personal access token after `glab auth login`
 glab-cli/.config/glab-cli/config.yml
+glab-cli/.config/glab-cli/recover
