@@ -1,0 +1,8 @@
+{
+  // Global markdownlint-cli2 config. Picked up for any markdown file under
+  // $HOME via parent-directory traversal. A closer .markdownlint-cli2.* (or
+  // sibling .markdownlint.*) in a project overrides this.
+  "config": {
+    "MD013": false
+  }
+}
