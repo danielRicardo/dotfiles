@@ -12,6 +12,12 @@ Each top-level directory (e.g. `nvim/`, `zsh/`, `alacritty/`) mirrors the home d
 
 The legacy `link.sh` script handles `.symlink`-suffixed files (creates `~/.<name>`) and links executables from `bin/` to `/usr/local/bin/`.
 
+## Conventions
+
+**Portable paths.** Config files must not hardcode user-specific paths like `/Users/{USER_NAME}/...`. Use `$HOME`, `~`, or `${XDG_*}` so the dotfiles work on any machine regardless of username.
+
+**XDG layout.** Prefer XDG Base Directory locations (`~/.config/<app>/`, `~/.cache/<app>/`, `~/.local/share/<app>/`) over legacy dotfile paths (`~/.<app>rc`, `~/.<app>/`) whenever the app supports it — usually via a `XDG_*` env var or a CLI flag. Tools that don't support XDG natively (e.g. zsh's `~/.zshrc`) stay where they are.
+
 ## Setup Commands
 
 ```sh

@@ -31,6 +31,9 @@ export XDG_CONFIG_HOME
 DOTFILES="$HOME/workspace/dotfiles"
 export DOTFILES
 
+CLAUDE_CONFIG_DIR="${XDG_CONFIG_HOME}/claude"
+export CLAUDE_CONFIG_DIR
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -224,6 +227,25 @@ else
 fi
 
 eval "$(jenv init -)"
+
+# JDK17+ module-access flags so forked test JVMs (Metals/bloop, Spark) work
+# without bloop carrying surefire's argLine. Breaks JDK8 — comment out if needed.
+export JAVA_TOOL_OPTIONS="\
+--add-opens=java.base/java.lang=ALL-UNNAMED \
+--add-opens=java.base/java.lang.invoke=ALL-UNNAMED \
+--add-opens=java.base/java.lang.reflect=ALL-UNNAMED \
+--add-opens=java.base/java.io=ALL-UNNAMED \
+--add-opens=java.base/java.net=ALL-UNNAMED \
+--add-opens=java.base/java.nio=ALL-UNNAMED \
+--add-opens=java.base/java.util=ALL-UNNAMED \
+--add-opens=java.base/java.util.concurrent=ALL-UNNAMED \
+--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED \
+--add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+--add-opens=java.base/sun.nio.cs=ALL-UNNAMED \
+--add-opens=java.base/sun.security.action=ALL-UNNAMED \
+--add-opens=java.base/sun.util.calendar=ALL-UNNAMED \
+--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED"
+
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
