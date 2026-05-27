@@ -31,9 +31,6 @@ export XDG_CONFIG_HOME
 DOTFILES="$HOME/workspace/dotfiles"
 export DOTFILES
 
-CLAUDE_CONFIG_DIR="${XDG_CONFIG_HOME}/claude"
-export CLAUDE_CONFIG_DIR
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 

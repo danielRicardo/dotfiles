@@ -2,9 +2,10 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/daniel.ricardo/.config/claude/statusline-command.sh"
+    "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "andrej-karpathy-skills@karpathy-skills": true,
@@ -19,7 +20,7 @@
       }
     }
   },
+  "effortLevel": "xhigh",
   "theme": "dark",
-  "skipAutoPermissionPrompt": true,
-  "effortLevel": "xhigh"
+  "skipAutoPermissionPrompt": true
 }
