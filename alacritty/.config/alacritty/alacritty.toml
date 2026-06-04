@@ -33,6 +33,7 @@ history = 10000
 [window]
 decorations = "none"
 dynamic_padding = false
+opacity = 0.85
 startup_mode = "Windowed"
 title = "Alacritty"
 
