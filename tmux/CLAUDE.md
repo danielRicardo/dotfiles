@@ -7,7 +7,7 @@ Tmux terminal multiplexer config. Two parallel copies of the same config exist (
 - `tmux.conf.symlink` — legacy copy, linked by `link.sh` to `~/.tmux.conf`.
 - `.config/tmux/tmux.conf` — XDG copy, linked by `stow tmux` to `~/.config/tmux/tmux.conf`.
 - `tpm_init.sh` — bootstrap script. Creates `~/.tmux/plugins/`, clones TPM if missing, sources the conf. After running, press `prefix + I` inside tmux to install plugins.
-- `.config/tmux/plugins/` — vendored TPM checkout plus installed plugins (already cloned in this repo). Normally TPM manages this dir at runtime; the committed copy means a fresh machine has plugins available before TPM runs.
+- `.config/tmux/plugins/` — runtime install location for TPM and the plugins it manages. **Not committed**: `.gitignore` excludes this whole dir, and each plugin here is its own independent git clone. A fresh machine starts with empty plugin dirs and must run `prefix + I` (TPM) to fetch them.
 
 ## Differences between the two confs
 
@@ -40,7 +40,7 @@ The XDG variant (`.config/tmux/tmux.conf`) diverges from `tmux.conf.symlink` in 
 
 ## Plugins (TPM)
 
-Declared in the conf and vendored under `.config/tmux/plugins/`:
+Declared in the conf; installed at runtime by TPM into `.config/tmux/plugins/` (not committed — see "Files" above):
 
 - `tmux-plugins/tpm` — plugin manager.
 - `robhurring/tmux-spotify` — `#{music_status}`, `#{artist}`, `#{track}` for status bar.
@@ -49,6 +49,8 @@ Declared in the conf and vendored under `.config/tmux/plugins/`:
 - `tmux-plugins/tmux-copycat` — regex search in copy mode.
 - `tmux-plugins/tmux-sidebar` — tree sidebar.
 - `wfxr/tmux-fzf-url` — `prefix u` to open URLs from the visible pane via fzf.
+- `tmux-plugins/tmux-resurrect` — save/restore sessions across reboots (`prefix + C-s` save, `prefix + C-r` restore).
+- `tmux-plugins/tmux-continuum` — auto-saves every 15 min (builds on resurrect). `@continuum-restore` is intentionally left off, so restore stays manual.
 
 The TPM bootstrap block at the bottom of the conf auto-clones TPM to `~/.tmux/plugins/tpm` if missing. Keep `run -b '~/.tmux/plugins/tpm/tpm'` as the **last line** of the file when editing.
 
