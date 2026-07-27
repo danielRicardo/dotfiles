@@ -1,24 +1,7 @@
 {
   "permissions": {
-    "defaultMode": "auto",
-    "deny": [
-      "EnterPlanMode",
-      "ExitPlanMode",
-      "DesignSync",
-      "LSP",
-      "ReportFindings",
-      "PushNotification",
-      "NotebookEdit",
-      "ShareOnboardingGuide",
-      "RemoteTrigger",
-      "ReadMcpResourceDirTool",
-      "ListMcpResourcesTool",
-      "ReadMcpResourceTool"
-    ]
+    "defaultMode": "auto"
   },
-  "disableArtifact": true,
-  "disableWorkflows": true,
-  "disableBundledSkills": true,
   "model": "sonnet",
   "statusLine": {
     "type": "command",
