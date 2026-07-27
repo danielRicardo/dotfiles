@@ -13,7 +13,11 @@
       "RemoteTrigger",
       "ReadMcpResourceDirTool",
       "ListMcpResourcesTool",
-      "ReadMcpResourceTool"
+      "ReadMcpResourceTool",
+      "ScheduleWakeup",
+      "CronCreate",
+      "CronList",
+      "CronDelete"
     ]
   },
   "disableArtifact": true,
