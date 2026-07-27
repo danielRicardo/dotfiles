@@ -2,7 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
@@ -10,7 +10,11 @@
   "enabledPlugins": {
     "andrej-karpathy-skills@karpathy-skills": true,
     "pyright-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "ldl-expert@ldl-agent-toolkit": true,
+    "skill-creator@claude-plugins-official": true,
+    "web-attribution-expert@web-attribution-kb": true,
+    "wiki-ops@daniel-wiki": true
   },
   "extraKnownMarketplaces": {
     "karpathy-skills": {
@@ -18,9 +22,27 @@
         "source": "github",
         "repo": "forrestchang/andrej-karpathy-skills"
       }
+    },
+    "ldl-agent-toolkit": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/daniel.ricardo/workspace/ldl-agent-toolkit"
+      }
+    },
+    "web-attribution-kb": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/daniel.ricardo/workspace/web-attribution-kb"
+      }
+    },
+    "daniel-wiki": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/daniel.ricardo/wiki/.claude/plugins"
+      }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "theme": "dark",
   "skipAutoPermissionPrompt": true
 }
