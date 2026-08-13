@@ -20,7 +20,7 @@ Hotkeys are not defined here; they live in `skhd/.config/skhd/skhdrc`. This fold
 - `layout bsp` — binary space partitioning
 - `window_placement second_child` — new windows open as the second child of the split
 - `split_ratio 0.50`, `auto_balance off`
-- `window_topmost off`, `window_shadow on`
+- `window_shadow on`
 - `insert_feedback_color 0xffd75f5f` — red insertion indicator
 
 **Padding / gaps**
