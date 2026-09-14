@@ -5,7 +5,7 @@ RESET=$'\033[0m'
 
 input=$(cat)
 
-IFS=$'\t' read -r model total used used_pct < <(
+IFS=$'\x1f' read -r model total used used_pct cwd cost < <(
   echo "$input" | jq -r '
     [
       .model.display_name // "Unknown",
@@ -18,10 +18,14 @@ IFS=$'\t' read -r model total used used_pct < <(
           + (.output_tokens // 0))
         | if . == 0 then "" else . end
       ),
-      (.context_window.used_percentage // "")
-    ] | @tsv
+      (.context_window.used_percentage // ""),
+      (.cwd // ""),
+      (.cost.total_cost_usd // "")
+    ] | join("")
   '
 )
+
+out="$model"
 
 if [ -n "$total" ] && [ -n "$used" ] && [ -n "$used_pct" ]; then
   if [ "$used" -ge 100000 ]; then
@@ -31,7 +35,16 @@ if [ -n "$total" ] && [ -n "$used" ] && [ -n "$used_pct" ]; then
   else
     color=""; reset=""
   fi
-  printf "%s | ctx: %s%s%s/%s (%.0f%%)" "$model" "$color" "$used" "$reset" "$total" "$used_pct"
-else
-  printf "%s" "$model"
+  out=$(printf "%s | ctx: %s%s%s/%s (%.0f%%)" "$out" "$color" "$used" "$reset" "$total" "$used_pct")
 fi
+
+if [ -n "$cwd" ] && git -C "$cwd" --no-optional-locks rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  branch=$(git -C "$cwd" --no-optional-locks branch --show-current 2>/dev/null)
+  [ -n "$branch" ] && out=$(printf "%s |  %s" "$out" "$branch")
+fi
+
+if [ -n "$cost" ]; then
+  out=$(printf "%s | \$%.2f" "$out" "$cost")
+fi
+
+printf "%s" "$out"
