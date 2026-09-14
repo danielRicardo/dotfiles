@@ -28,6 +28,10 @@
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
+  "subagentStatusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/subagent-statusline-command.sh"
+  },
   "enabledPlugins": {
     "andrej-karpathy-skills@karpathy-skills": true,
     "pyright-lsp@claude-plugins-official": true,
