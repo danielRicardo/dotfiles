@@ -57,7 +57,7 @@ Most are bundled with OMZ; `zsh-autosuggestions` and `zsh-syntax-highlighting` n
 
 Small file, four functions:
 
-- `work` — fzf-pick a directory in `~/workspace` and `tat` (tmux attach) into it.
+- `work` — fzf-pick a repo under `~/workspace` and `tat` (tmux attach) into it. Repos live one level down inside project folders (`web_attribution`, `PBA`, `SKAN`, `incrementality`, `infrastructure`, `misc`), so the picker shows `project/repo`; a top-level dir is listed as-is when it is itself a repo (`dotfiles`). Cancelling fzf aborts without calling `tat`.
 - `gs` — fzf-pick a git branch and `git switch` to it.
 - `java8` / `java17` — set `JAVA_HOME` via `/usr/libexec/java_home -v <ver>` and prepend to PATH. `java8` is called at the bottom so the shell starts with Java 8 active. (Note: `jenv` is also initialized in `.zshrc`, so these coexist; the `java*` functions take precedence at startup.)
 

@@ -1,5 +1,21 @@
 function work() {
-  tat $(ls "$HOME/workspace" | sort -r | fzf | xargs -I{} echo "$HOME/workspace/{}")
+  local root="$HOME/workspace"
+  local d sel
+  local -a entries subdirs
+
+  # Repos live one level down, inside project folders (web_attribution, SKAN, ...).
+  # A top-level dir is offered as-is when it is itself a repo (e.g. dotfiles).
+  for d in "$root"/*(/N); do
+    subdirs=("$d"/*(/N))
+    if [[ -e "$d/.git" || ${#subdirs} -eq 0 ]]; then
+      entries+=("${d:t}")
+    else
+      entries+=("${subdirs[@]#$root/}")
+    fi
+  done
+
+  sel=$(print -l "${entries[@]}" | sort -r | fzf) || return
+  [[ -n "$sel" ]] && tat "$root/$sel"
 }
 
 function gs() {
