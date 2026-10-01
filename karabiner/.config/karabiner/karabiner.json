@@ -4,9 +4,20 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Application to Hyper Key",
+                        "description": "Application to Hyper Key - all except Corne",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 24926,
+                                                "vendor_id": 7504
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "application",
                                     "modifiers": { "optional": ["any"] }
@@ -54,10 +65,20 @@
                         ]
                     },
                     {
-                        "description": "Right Option Key → Hyper Key (⌃⌥⇧⌘)",
-                        "enabled": false,
+                        "description": "Right Option Key → Hyper Key (⌃⌥⇧⌘) - all except Corne",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 24926,
+                                                "vendor_id": 7504
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "right_option",
                                     "modifiers": { "optional": ["any"] }
@@ -73,9 +94,20 @@
                         ]
                     },
                     {
-                        "description": "Caps Lock → Meh Key (⌃⌥⇧) (Caps Lock if alone)",
+                        "description": "Caps Lock → Meh Key (⌃⌥⇧) (Caps Lock if alone) - all except Corne",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 24926,
+                                                "vendor_id": 7504
+                                            }
+                                        ],
+                                        "type": "device_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": { "optional": ["caps_lock"] }
